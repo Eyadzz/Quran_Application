@@ -77,3 +77,11 @@ flutter:
   assets:
     - assets/images/
     - assets/content/
+
+  fonts:
+    - family: ElMessiri
+      fonts:
+        - asset: assets/fonts/ElMessiri.ttf
+    - family: Monotype-Koufi
+      fonts:
+        - asset: assets/fonts/Monotype-Koufi.ttf

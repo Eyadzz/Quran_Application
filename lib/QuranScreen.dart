@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -12,8 +11,8 @@ class QuranScreen extends StatefulWidget {
 }
 
 class _QuranScreenState extends State<QuranScreen> {
-  var suraName=[];
-  var suraContent=[];
+  var surasNames=[];
+  var surasNums=[];
   var colorTheme = Color.fromRGBO(183, 147, 95, 1);
 
   @override
@@ -26,7 +25,7 @@ class _QuranScreenState extends State<QuranScreen> {
           color: Colors.black,
           fontSize: 35,
           fontWeight: FontWeight.bold,
-          fontFamily: "El Messiri",
+          fontFamily: "ElMessiri",
         ),),
         centerTitle: true,
         elevation: 0,
@@ -67,7 +66,7 @@ class _QuranScreenState extends State<QuranScreen> {
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.w500,
-                              fontFamily: "Monotype Koufi",
+                              fontFamily: "Monotype-Koufi",
                             ),
                           ),
                         ),
@@ -78,6 +77,7 @@ class _QuranScreenState extends State<QuranScreen> {
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.w500,
+                              fontFamily: "Monotype-Koufi",
                             ),
                           ),
                         ),
@@ -92,9 +92,9 @@ class _QuranScreenState extends State<QuranScreen> {
                         shrinkWrap: true,
                         itemBuilder: (context, index)
                             {
-                              return buildContent(suraName.elementAt(index), suraContent.elementAt(index));
+                              return buildContent(surasNames.elementAt(index), surasNums.elementAt(index));
                             },
-                        itemCount: suraName.length,
+                        itemCount: surasNames.length,
                     ),
                   ),
                 ],
@@ -114,11 +114,11 @@ class _QuranScreenState extends State<QuranScreen> {
   getContent()
   async {
     String data = await loadAsset('assets/content/sura_names.txt');
-    suraName=data.split("\n");
+    surasNames=data.split("\n");
     data = await loadAsset('assets/content/suras_nums.txt');
-    suraContent=data.split("\n");
-    print(suraName.length);
-    print(suraContent.length);
+    surasNums=data.split("\n");
+    print(surasNames.length);
+    print(surasNums.length);
   }
 
   Widget buildContent(String name, String number)
