@@ -72,12 +72,15 @@ class _QuranScreenState extends State<QuranScreen> {
                         ),
                       ),
                       Expanded(
-                        child: Center(
-                          child: Text("اسم السورة",
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "Monotype-Koufi",
+                        child: Container(
+                          decoration: BoxDecoration(border: Border(left: BorderSide(color: colorTheme,width: 3,))),
+                          child: Center(
+                            child: Text("اسم السورة",
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Monotype-Koufi",
+                              ),
                             ),
                           ),
                         ),
