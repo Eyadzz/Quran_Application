@@ -14,6 +14,12 @@ class _QuranScreenState extends State<QuranScreen> {
   var surasNames=[];
   var surasNums=[];
   var colorTheme = Color.fromRGBO(183, 147, 95, 1);
+  var textContentStyle = TextStyle(
+    fontSize: 25,
+    color: Colors.black,
+    fontFamily: "Sultann",
+
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -44,59 +50,31 @@ class _QuranScreenState extends State<QuranScreen> {
       ),
         Column(
           children: [
-            SizedBox(height: 80,),
+            SizedBox(height: 80),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset("assets/images/moshaf.png"),
               ],
             ),
-            SizedBox(height: 15,),
+            SizedBox(height: 15),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(height: 3, width: double.infinity, color: colorTheme,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: Center(
-                          child: Text("عدد الآيات",
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "Monotype-Koufi",
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(border: Border(left: BorderSide(color: colorTheme,width: 3,))),
-                          child: Center(
-                            child: Text("اسم السورة",
-                              style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: "Monotype-Koufi",
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                      header("عدد الآيات",  BoxDecoration(border: Border(bottom: BorderSide(color: colorTheme,width: 3,),top: BorderSide(color: colorTheme,width: 3,)))),
+                      header("اسم السورة", BoxDecoration(border: Border(left: BorderSide(color: colorTheme,width: 3,),bottom: BorderSide(color: colorTheme,width: 3,),top: BorderSide(color: colorTheme,width: 3,)))),
                     ],
                   ),
-                  Container(height: 3, width: double.infinity, color: colorTheme,),
                   Expanded(
                     child: ListView.builder(
                         padding: EdgeInsets.only(top: 0.0),
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
-                        itemBuilder: (context, index)
-                            {
-                              return buildContent(surasNames.elementAt(index), surasNums.elementAt(index));
-                            },
+                        itemBuilder: (context, index) => buildContent(surasNames.elementAt(index), surasNums.elementAt(index)),
                         itemCount: surasNames.length,
                     ),
                   ),
@@ -130,11 +108,7 @@ class _QuranScreenState extends State<QuranScreen> {
           child: Center(
             child: Text(
               number,
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
+              style: textContentStyle,
             ),
           ),
         ),
@@ -148,16 +122,30 @@ class _QuranScreenState extends State<QuranScreen> {
                 ),
                 child: Text(
                   name,
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+                  style: textContentStyle,
                 )
             ),
           ),
         ),
       ],
     );
+  }
+
+  Widget header(String text, var containerBorders)
+  {
+    return Expanded(
+      child: Container(
+        decoration: containerBorders,
+        child: Center(
+          child: Text(text,
+            style: TextStyle(
+              fontSize: 25,
+              fontFamily: "ElMessiri",
+            ),
+          ),
+        ),
+      ),
+    );
+
   }
 }

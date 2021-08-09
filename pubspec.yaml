@@ -82,6 +82,9 @@ flutter:
     - family: ElMessiri
       fonts:
         - asset: assets/fonts/ElMessiri.ttf
-    - family: Monotype-Koufi
+    - family: Sultann
       fonts:
-        - asset: assets/fonts/Monotype-Koufi.ttf
+        - asset: assets/fonts/Sultan.ttf
+    - family: contentFont
+      fonts:
+        - asset: assets/fonts/MonotypeKoufiBold.ttf
