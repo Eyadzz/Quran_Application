@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quran_application/QuranScreen.dart';
 import 'package:quran_application/TasbeehScreen.dart';
 class CustomBottomBar extends StatefulWidget {
+  const CustomBottomBar ({Key? key, this.mypage}) : super(key: key);
   static const routeName = "home";
   final iconSize = 30.0, iconColor = Colors.white;
 
@@ -10,7 +11,7 @@ class CustomBottomBar extends StatefulWidget {
   final sebhaPageName = TasbeehScreen.routeName;
   final radioPageName = QuranScreen.routeName;
 
-
+  final mypage;
   @override
   _CustomBottomBarState createState() => _CustomBottomBarState();
 }
@@ -32,7 +33,8 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
 
               IconButton(
                 onPressed: (){
-                  Navigator.pushReplacementNamed(context, widget.quranPageName);
+                  //Navigator.pushReplacementNamed(context, widget.quranPageName);
+                  widget.mypage.jumpToPage(0);
                 },
                 icon: ImageIcon(
                   AssetImage("assets/images/moshaf_blue@3x.png"),
@@ -42,7 +44,8 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               ),
               IconButton(
                 onPressed: (){
-                  Navigator.pushReplacementNamed(context, widget.radioPageName);
+                  //Navigator.pushReplacementNamed(context, widget.radioPageName);
+                  widget.mypage.jumpToPage(1);
                 },
                 icon: ImageIcon(
                   AssetImage("assets/images/radio_blue@3x.png"),
@@ -52,7 +55,8 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               ),
               IconButton(
                 onPressed: (){
-                  Navigator.pushReplacementNamed(context, widget.sebhaPageName);
+                  //Navigator.pushReplacementNamed(context, widget.sebhaPageName);
+                  widget.mypage.jumpToPage(2);
                 },
                 icon: ImageIcon(
                   AssetImage("assets/images/sebha_blue@3x.png"),
@@ -62,7 +66,8 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               ),
               IconButton(
                 onPressed: (){
-                  Navigator.pushReplacementNamed(context, widget.hasdisPageName);
+                  //Navigator.pushReplacementNamed(context, widget.hasdisPageName);
+                  widget.mypage.jumpToPage(3);
                 },
                 icon: ImageIcon(
                   AssetImage("assets/images/moshaf@3x.png"),

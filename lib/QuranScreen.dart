@@ -31,20 +31,6 @@ class _QuranScreenState extends State<QuranScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomBar(),
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: Text("إسلامي", style: TextStyle(
-          color: Colors.black,
-          fontSize: 35,
-          fontWeight: FontWeight.bold,
-          fontFamily: "ElMessiri",
-          ),
-        ),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
       body: Stack(
         alignment: AlignmentDirectional.center,
         children: [

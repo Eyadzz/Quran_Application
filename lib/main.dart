@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quran_application/QuranScreen.dart';
 import 'package:quran_application/TasbeehScreen.dart';
 import 'SplashCustom.dart';
+import 'Home.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,8 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Quran",
+      debugShowCheckedModeBanner: false,
       home: SplashCustom(),
       routes: {
+        Home.routeName:(context)=>Home(),
         QuranScreen.routeName:(context)=>QuranScreen(),
         SplashCustom.routeName: (context)=>SplashCustom(),
         TasbeehScreen.routeName: (context)=>TasbeehScreen(),
