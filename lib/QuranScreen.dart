@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:quran_application/CustomBottomBar.dart';
 
 class QuranScreen extends StatefulWidget {
 
@@ -30,6 +31,7 @@ class _QuranScreenState extends State<QuranScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: CustomBottomBar(),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text("إسلامي", style: TextStyle(

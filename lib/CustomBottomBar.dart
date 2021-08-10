@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'SplashCustom.dart';
-import 'Home.dart';
+import 'package:quran_application/QuranScreen.dart';
 class CustomBottomBar extends StatefulWidget {
-  CustomBottomBar({Key key}) : super(key: key);
   static const routeName = "home";
   final iconSize = 30.0, iconColor = Colors.white;
 
-  final quranPageName = Home.routeName;
-  final hasdisPageName = Home.routeName;
-  final sebhaPageName = SplashCustom.routeName;
-  final radioPageName = Home.routeName;
+  final quranPageName = QuranScreen.routeName;
+  final hasdisPageName = QuranScreen.routeName;
+  final sebhaPageName = QuranScreen.routeName;
+  final radioPageName = QuranScreen.routeName;
 
 
   @override
@@ -23,7 +21,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
   Widget build(BuildContext context) {
     return BottomAppBar(
       //color: Color(0x46352b),
-        color: Colors.brown,
+        color:  Color.fromRGBO(183, 147, 95, 1),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Row(

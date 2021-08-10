@@ -5,7 +5,6 @@ import 'Home.dart';
 
 
 class Splash extends StatefulWidget {
-  const Splash({Key key}) : super(key: key);
 
 
   @override

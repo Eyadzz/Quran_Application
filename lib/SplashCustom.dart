@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Home.dart';
+import 'package:quran_application/QuranScreen.dart';
 
 class SplashCustom extends StatefulWidget {
-  const SplashCustom({Key key}) : super(key: key);
   static const routeName = "splash";
   @override
   _SplashCustomState createState() => _SplashCustomState();
@@ -17,7 +16,7 @@ class _SplashCustomState extends State<SplashCustom> {
   }
   _navigateToHome() async{
     await Future.delayed(Duration(seconds: 2));
-    Navigator.pushReplacementNamed(context, Home.routeName);
+    Navigator.pushReplacementNamed(context, QuranScreen.routeName);
   }
 
   @override
