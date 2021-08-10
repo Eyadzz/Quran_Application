@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quran_application/QuranScreen.dart';
+import 'package:quran_application/TasbeehScreen.dart';
 import 'SplashCustom.dart';
-import 'package:quran_application/ReadQuran.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       routes: {
         QuranScreen.routeName:(context)=>QuranScreen(),
         SplashCustom.routeName: (context)=>SplashCustom(),
+        TasbeehScreen.routeName: (context)=>TasbeehScreen(),
       },
     );
   }

@@ -1,8 +1,6 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
 
 
 class ReadQuran extends StatefulWidget {
@@ -36,7 +34,7 @@ class _ReadQuranState extends State<ReadQuran> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+      body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/bg3.png"),
@@ -52,49 +50,51 @@ class _ReadQuranState extends State<ReadQuran> {
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children:<Widget>[
-                  SizedBox(height:150),
-                  Text(SurahName, style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold)),
+                children: <Widget>[
+                  SizedBox(height: 150),
+                  Text(SurahName, style: TextStyle(color: Colors.black,
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold)),
                   Container(
                       decoration: BoxDecoration(
-                      image: DecorationImage(
-                         fit: BoxFit.contain,
-                          image: AssetImage("assets/images/Line 4.png")
-                      )
-                  )),
-                  SizedBox(height:10),
-                new Expanded(
+                          image: DecorationImage(
+                              fit: BoxFit.contain,
+                              image: AssetImage("assets/images/Line 4.png")
+                          )
+                      )),
+                  SizedBox(height: 10),
+                  new Expanded(
                       flex: 1,
-                      child:new Container(
-                       margin: EdgeInsets.fromLTRB(40, 40, 40,80),
+                      child: new Container(
+                          margin: EdgeInsets.fromLTRB(40, 40, 40, 80),
                           child: new SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: new FutureBuilder(
-                            future: ReadData(SurahNum),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<String>lines) {
-                              if(lines.data!=null){
-                                return new Text(lines.data,style: TextStyle(fontSize: 20));
-                              }
-                              else{
-                                return new Text('Nothing to show');
-                              }}
-                        )
+                              scrollDirection: Axis.vertical,
+                              child: new FutureBuilder(
+                                  future: ReadData(SurahNum),
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot<String>lines) {
+                                    if (lines.data != null) {
+                                      return new Text(lines.data!,
+                                          style: TextStyle(fontSize: 20));
+                                    }
+                                    else {
+                                      return new Text('Nothing to show');
+                                    }
+                                  }
+                              )
+                          )
                       )
-                    )
-                )
-                ],
                   )
+                ],
               )
-          ),
+          )
+      ),
     );
   }
 
   Future<String> ReadData(int NumOfSurah) async {
-    try {
-      String data = await rootBundle.loadString('assets/txts/$NumOfSurah.txt');
-      List<String> lines = data.split('\n');
-      return ConcreteSurahDisplay(lines);
-    } catch (e) {}
+    String data = await rootBundle.loadString('assets/txts/$NumOfSurah.txt');
+    List<String> lines = data.split('\n');
+    return ConcreteSurahDisplay(lines);
   }
 }

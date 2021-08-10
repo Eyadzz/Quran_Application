@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:quran_application/QuranScreen.dart';
+import 'package:quran_application/TasbeehScreen.dart';
 class CustomBottomBar extends StatefulWidget {
   static const routeName = "home";
   final iconSize = 30.0, iconColor = Colors.white;
 
   final quranPageName = QuranScreen.routeName;
   final hasdisPageName = QuranScreen.routeName;
-  final sebhaPageName = QuranScreen.routeName;
+  final sebhaPageName = TasbeehScreen.routeName;
   final radioPageName = QuranScreen.routeName;
 
 
