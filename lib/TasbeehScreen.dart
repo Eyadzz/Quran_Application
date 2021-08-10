@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'TasbeehCounterDisplay.dart';
+import 'ImageRotation.dart';
 
 class TasbeehScreen extends StatelessWidget {
   static const routeName = 'tasbeeh';
@@ -28,9 +29,11 @@ class TasbeehScreen extends StatelessWidget {
                   Image(
                     image: AssetImage('assets/images/headofseb7a.png'),
                   ),
-                  Image(
-                    image: AssetImage('assets/images/bodyofseb7a.png'),
+
+                  ImageRotation(
+                    imageToRotate: Image(image: AssetImage('assets/images/bodyofseb7a.png'),)
                   ),
+
                   Expanded(child: TasbeehCounterDisplay(label: 'سبحان الله',)),
 
                 ]
