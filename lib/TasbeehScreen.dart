@@ -14,7 +14,7 @@ class TasbeehScreen extends StatelessWidget {
               decoration: new BoxDecoration(
                 image: new DecorationImage(
                   image: new AssetImage("assets/images/bg3.png"),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -22,14 +22,10 @@ class TasbeehScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Text('اسلامى', textScaleFactor: 2.5),
-                  ),
+                  SizedBox(height: 100,),
                   Image(
                     image: AssetImage('assets/images/headofseb7a.png'),
                   ),
-
                   ImageRotation(
                     imageToRotate: Image(image: AssetImage('assets/images/bodyofseb7a.png'),)
                   ),

@@ -4,7 +4,7 @@ import 'package:quran_application/TasbeehScreen.dart';
 class CustomBottomBar extends StatefulWidget {
   const CustomBottomBar ({Key? key, this.mypage}) : super(key: key);
   static const routeName = "home";
-  final iconSize = 30.0, iconColor = Colors.white;
+  final iconSize = 100.0, iconColor = Colors.white;
 
   final quranPageName = QuranScreen.routeName;
   final hasdisPageName = QuranScreen.routeName;
