@@ -10,7 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: ReadQuran()
+        home: ReadQuran(
+          setSurah("البقرة",2)
+        )
     );
   }
 }

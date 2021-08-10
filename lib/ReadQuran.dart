@@ -6,22 +6,29 @@ import 'package:path_provider/path_provider.dart';
 
 
 class ReadQuran extends StatefulWidget {
-  const ReadQuran({key}) : super(key: key);
+  const ReadQuran(setSurah, {key}) : super(key: key);
 
   @override
   _ReadQuranState createState() => _ReadQuranState();
 }
-
+const String routeName="ReadQuran";
 String SurahName="الفاتحة";
 int SurahNum=0;
 
+
+setSurah(String Surah_Name,int Surah_Num){
+  SurahName=Surah_Name;
+  SurahNum=Surah_Num;
+}
+int AyahNum=0;
+
 String ConcreteSurahDisplay(List<String>Surah){
   String surahText='';
-  SurahNum=1;
+  AyahNum=1;
   for(var line in Surah){
-    surahText+=" ("+SurahNum.toString()+") ";
+    surahText+=" ("+AyahNum.toString()+") ";
     surahText+=line;
-    SurahNum++;
+    AyahNum++;
   }
   return surahText;
 }
@@ -45,7 +52,8 @@ class _ReadQuranState extends State<ReadQuran> {
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children:[
+                children:<Widget>[
+                  SizedBox(height:150),
                   Text(SurahName, style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold)),
                   Container(
                       decoration: BoxDecoration(
@@ -54,32 +62,29 @@ class _ReadQuranState extends State<ReadQuran> {
                           image: AssetImage("assets/images/Line 4.png")
                       )
                   )),
-                  SizedBox(height: 50),
-                  Container(
-                    margin: const EdgeInsets.all(40),
-                      child: new FutureBuilder(
-                          future: ReadData(1),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<String>lines) {
-                            if(lines.data!=null){
-                              return new Text(lines.data,style: TextStyle(fontSize: 20));
-                            }
-                            else{
-                              return new Text('Nothing to show');
-                            }}
+                  SizedBox(height:10),
+                new Expanded(
+                      flex: 1,
+                      child:new Container(
+                       margin: EdgeInsets.fromLTRB(40, 40, 40,80),
+                          child: new SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: new FutureBuilder(
+                            future: ReadData(SurahNum),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<String>lines) {
+                              if(lines.data!=null){
+                                return new Text(lines.data,style: TextStyle(fontSize: 20));
+                              }
+                              else{
+                                return new Text('Nothing to show');
+                              }}
+                        )
                       )
-
-                  ),
-
-
-
+                    )
+                )
                 ],
-
-
-
                   )
-
-
               )
           ),
     );
