@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
         QuranScreen.routeName:(context)=>QuranScreen(),
       },
       initialRoute: QuranScreen.routeName,
-
     );
   }
 }

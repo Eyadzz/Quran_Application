@@ -22,8 +22,13 @@ class _QuranScreenState extends State<QuranScreen> {
   );
 
   @override
-  Widget build(BuildContext context) {
+  void  initState(){
     getContent();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -32,7 +37,8 @@ class _QuranScreenState extends State<QuranScreen> {
           fontSize: 35,
           fontWeight: FontWeight.bold,
           fontFamily: "ElMessiri",
-        ),),
+          ),
+        ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -71,6 +77,7 @@ class _QuranScreenState extends State<QuranScreen> {
                   ),
                   Expanded(
                     child: ListView.builder(
+
                         padding: EdgeInsets.only(top: 0.0),
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
@@ -88,15 +95,15 @@ class _QuranScreenState extends State<QuranScreen> {
   );
   }
 
-  Future<String> loadAsset(String path) async {
+  Future<String> loadData(String path) async {
     return await rootBundle.loadString(path);
   }
 
   getContent()
   async {
-    String data = await loadAsset('assets/content/sura_names.txt');
+    String data = await loadData('assets/content/sura_names.txt');
     surasNames=data.split("\n");
-    data = await loadAsset('assets/content/suras_nums.txt');
+    data = await loadData('assets/content/suras_nums.txt');
     surasNums=data.split("\n");
   }
 
