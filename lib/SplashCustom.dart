@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Home.dart';
+
 class SplashCustom extends StatefulWidget {
   const SplashCustom({Key key}) : super(key: key);
   static const routeName = "splash";

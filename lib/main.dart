@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quran_application/Home.dart';
-import 'package:quran_application/Splash.dart';
-import 'package:quran_application/SplashCustom.dart';
+import 'SplashCustom.dart';
+import 'Home.dart';
 void main() {
   runApp(MyApp());
 }
