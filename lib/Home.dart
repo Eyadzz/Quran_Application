@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
         children: [
             QuranScreen(),
             Container(
-              child: Center(child: Text("Radio"),),
+              child: Center(child: Text("radio broke"),),
             ),
             TasbeehScreen(),
             HadethScreen(),

@@ -49,7 +49,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
                     Color.fromRGBO(183, 147, 95, 1).withAlpha(100)),
-                fixedSize: MaterialStateProperty.all(Size(70, 80)),
+                minimumSize: MaterialStateProperty.all(Size(60,80)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0),
@@ -58,12 +58,12 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
             onPressed: _incrementTasbeehCounter,
             child: Text(tasbeehButtonLabel, textScaleFactor: 1.6),
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.green),
-                fixedSize: MaterialStateProperty.all(Size(150, 40)),
+                backgroundColor: MaterialStateProperty.all(Color.fromRGBO(183, 147, 95, 1)),
+                minimumSize: MaterialStateProperty.all(Size(150,40)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25.0),
-                        side: BorderSide(color: Colors.green)))))
+                        side: BorderSide(color: Color.fromRGBO(183, 147, 95, 1))))))
       ],
     );
   }

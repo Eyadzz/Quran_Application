@@ -22,13 +22,13 @@ class TasbeehScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              SizedBox(height: 80,),
               Expanded(
-                flex: 1,
                 child: Stack(
                   children: [
                     Positioned(
                       top: 15,
-                      left: 160,
+                      left: 180,
                       child: Container(
                         child: Image(
                           image: AssetImage('assets/images/headofseb7a.png'),
@@ -48,6 +48,7 @@ class TasbeehScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(height: 20,),
               Expanded(child: TasbeehCounterDisplay()),
             ])
       ],
