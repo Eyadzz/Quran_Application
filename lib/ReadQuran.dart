@@ -36,6 +36,7 @@ class _ReadQuranState extends State<ReadQuran> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.black,), onPressed: (){Navigator.pop(context);},),
         title: Text("إسلامي", style: TextStyle(
           color: Colors.black,
           fontSize: 35,

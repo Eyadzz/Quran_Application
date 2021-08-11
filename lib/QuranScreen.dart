@@ -93,6 +93,7 @@ class _QuranScreenState extends State<QuranScreen> {
     surasNames=data.split("\n");
     data = await loadData('assets/content/suras_nums.txt');
     surasNums=data.split("\n");
+    setState(() {});
   }
 
   Widget buildContent(String name, String number, int index)
