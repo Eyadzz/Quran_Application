@@ -20,22 +20,16 @@ class _HadethState extends State<HadethScreen> {
 
   );
 
+ @override
+  void  initState(){
+    getContent();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    getContent();
     return Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          title: Text("إسلامي", style: TextStyle(
-            color: Colors.black,
-            fontSize: 35,
-            fontWeight: FontWeight.bold,
-            fontFamily: "ElMessiri",
-          ),),
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-        ),
         body: Stack(
           alignment: AlignmentDirectional.center,
           children: [
@@ -86,14 +80,15 @@ class _HadethState extends State<HadethScreen> {
     );
   }
 
-  Future<String> loadAsset(String path) async {
+  Future<String> loadFileData(String path) async {
     return await rootBundle.loadString(path);
   }
 
   getContent()
   async {
-    String data = await loadAsset('assets/content/ahadeth_names.txt');
+    String data = await loadFileData('assets/content/hades_names.txt');
     hadethName=data.split("\n");
+    setState(() {});
   }
 
   Widget buildContent(String name)
@@ -107,7 +102,7 @@ class _HadethState extends State<HadethScreen> {
         Expanded(
           child: Container(
             child: TextButton(
-                onPressed: null,
+                onPressed: null, 
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),

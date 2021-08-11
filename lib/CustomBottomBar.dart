@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:quran_application/QuranScreen.dart';
 import 'package:quran_application/TasbeehScreen.dart';
+import 'package:quran_application/HadethScreen.dart';
 class CustomBottomBar extends StatefulWidget {
   const CustomBottomBar ({Key? key, this.mypage}) : super(key: key);
   static const routeName = "home";
   final iconSize = 100.0, iconColor = Colors.white;
 
   final quranPageName = QuranScreen.routeName;
-  final hasdisPageName = QuranScreen.routeName;
+  final hadisPageName = HadethScreen.routeName;
   final sebhaPageName = TasbeehScreen.routeName;
   final radioPageName = QuranScreen.routeName;
 
@@ -66,7 +67,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               ),
               IconButton(
                 onPressed: (){
-                  //Navigator.pushReplacementNamed(context, widget.hasdisPageName);
+                  //Navigator.pushReplacementNamed(context, widget.hadisPageName);
                   widget.mypage.jumpToPage(3);
                 },
                 icon: ImageIcon(
