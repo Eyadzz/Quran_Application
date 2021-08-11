@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TasbeehCounterDisplay extends StatefulWidget {
-  TasbeehCounterDisplay({Key? key, required this.label}) : super(key: key);
-  final String label;
+  TasbeehCounterDisplay({Key? key}) : super(key: key);
 
   @override
   _TasbeehCounterDisplayState createState() => _TasbeehCounterDisplayState();
@@ -11,11 +10,20 @@ class TasbeehCounterDisplay extends StatefulWidget {
 
 class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
   int _tasbeehCounter = 0;
+   String tasbeehButtonLabel = 'سبحان الله';
+
 
   void _incrementTasbeehCounter() {
     setState(() {
-      if (_tasbeehCounter == 30) {
+      if (_tasbeehCounter == 33) {
         _tasbeehCounter = 0;
+        if(tasbeehButtonLabel == 'سبحان الله'){
+          tasbeehButtonLabel = 'الحمد لله';
+        }else if(tasbeehButtonLabel == 'الحمد لله'){
+          tasbeehButtonLabel = 'الله اكبر';
+        }else{
+          tasbeehButtonLabel = 'سبحان الله';
+        }
       } else {
         _tasbeehCounter++;
       }
@@ -43,7 +51,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
         ),
         ElevatedButton(
             onPressed: _incrementTasbeehCounter,
-            child: Text(widget.label,textScaleFactor: 1.6),
+            child: Text(tasbeehButtonLabel,textScaleFactor: 1.6),
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.green),
                 fixedSize: MaterialStateProperty.all(Size(150, 40)),

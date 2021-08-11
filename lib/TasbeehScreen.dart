@@ -34,7 +34,7 @@ class TasbeehScreen extends StatelessWidget {
                     imageToRotate: Image(image: AssetImage('assets/images/bodyofseb7a.png'),)
                   ),
 
-                  Expanded(child: TasbeehCounterDisplay(label: 'سبحان الله',)),
+                  Expanded(child: TasbeehCounterDisplay()),
 
                 ]
             )
