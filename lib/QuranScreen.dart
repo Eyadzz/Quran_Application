@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:quran_application/CustomBottomBar.dart';
+import 'package:quran_application/ReadQuran.dart';
 
 class QuranScreen extends StatefulWidget {
 
@@ -69,7 +69,7 @@ class _QuranScreenState extends State<QuranScreen> {
                         padding: EdgeInsets.only(top: 0.0),
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
-                        itemBuilder: (context, index) => buildContent(surasNames.elementAt(index), surasNums.elementAt(index)),
+                        itemBuilder: (context, index) => buildContent(surasNames.elementAt(index), surasNums.elementAt(index), index+1),
                         itemCount: surasNames.length,
                     ),
                   ),
@@ -95,7 +95,7 @@ class _QuranScreenState extends State<QuranScreen> {
     surasNums=data.split("\n");
   }
 
-  Widget buildContent(String name, String number)
+  Widget buildContent(String name, String number, int index)
   {
     return Row(
       children: [
@@ -111,7 +111,9 @@ class _QuranScreenState extends State<QuranScreen> {
           child: Container(
             decoration: BoxDecoration(border: Border(left: BorderSide(color: colorTheme,width: 3,))),
             child: TextButton(
-                onPressed: null,
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(setSurah(name,index))));
+                },
                 style: TextButton.styleFrom(
                  padding: EdgeInsets.zero,
                 ),

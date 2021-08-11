@@ -34,6 +34,11 @@ class _ReadQuranState extends State<ReadQuran> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
