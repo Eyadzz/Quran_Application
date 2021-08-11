@@ -9,32 +9,48 @@ class TasbeehScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(
-          children: <Widget>[
-            Container(
-              decoration: new BoxDecoration(
-                image: new DecorationImage(
-                  image: new AssetImage("assets/images/bg3.png"),
-                  fit: BoxFit.fill,
+      children: <Widget>[
+        Container(
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage("assets/images/bg3.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: 15,
+                      left: 160,
+                      child: Container(
+                        child: Image(
+                          image: AssetImage('assets/images/headofseb7a.png'),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 90,
+                      left: 80,
+                      child: Container(
+                        child: ImageRotation(
+                            imageToRotate: Image(
+                          image: AssetImage('assets/images/bodyofseb7a.png'),
+                        )),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(height: 100,),
-                  Image(
-                    image: AssetImage('assets/images/headofseb7a.png'),
-                  ),
-                  ImageRotation(
-                    imageToRotate: Image(image: AssetImage('assets/images/bodyofseb7a.png'),)
-                  ),
-
-                  Expanded(child: TasbeehCounterDisplay(label: 'سبحان الله',)),
-
-                ]
-            )
-          ],
-        ));
+              Expanded(child: TasbeehCounterDisplay()),
+            ])
+      ],
+    ));
   }
 }
