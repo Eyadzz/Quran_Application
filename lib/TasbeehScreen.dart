@@ -23,32 +23,38 @@ class TasbeehScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
 
-                  Stack(
-                    children: [
+                  Expanded(
+                    flex: 1,
+                    child: Stack(
+                      children: [
 
 
-                         Positioned(
-                           left: 3,
-                           child: Container(
-                             width: 500,
-                             height: 120,
+                           Positioned(
+                             left: 0,
+                             child: Container(
+                               width: 420,
+                               height: 270,
 
-                             child: Image(
-                              image: AssetImage('assets/images/headofseb7a.png'),
-                        ),
-                           ),
-                         ),
-
-
-
-                      Container(
-                        width: 400,
-                        height: 400,
-                          child: ImageRotation(
-                              imageToRotate: Image(image: AssetImage('assets/images/bodyofseb7a.png'),)
+                               child: Image(
+                                image: AssetImage('assets/images/headofseb7a.png'),
                           ),
+                             ),
+                           ),
+
+
+
+                        Positioned(
+                          top: 0,
+                          child: Container(
+                            width: 400,
+                              height: 550,
+                              child: ImageRotation(
+                                  imageToRotate: Image(image: AssetImage('assets/images/bodyofseb7a.png'),)
+                              ),
+                            ),
                         ),
-                    ],
+                      ],
+                    ),
                   ),
 
                   Expanded(child: TasbeehCounterDisplay()),
