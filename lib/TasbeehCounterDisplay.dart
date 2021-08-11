@@ -100,14 +100,14 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
 
         ElevatedButton(
             onPressed: null,
-            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6),
+            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: Colors.white.withOpacity(1))),
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.green),
+                backgroundColor: MaterialStateProperty.all(Color.fromRGBO(183, 147, 95, 1)),
                 minimumSize: MaterialStateProperty.all(Size(150,40)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25.0),
-                        side: BorderSide(color: Colors.green)))))
+                        side: BorderSide(color: Color.fromRGBO(183, 147, 95, 1))))))
       ],
     );
   }
