@@ -26,12 +26,32 @@ class TasbeehScreen extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: Text('اسلامى', textScaleFactor: 2.5),
                   ),
-                  Image(
-                    image: AssetImage('assets/images/headofseb7a.png'),
-                  ),
+                  Stack(
+                    children: [
 
-                  ImageRotation(
-                    imageToRotate: Image(image: AssetImage('assets/images/bodyofseb7a.png'),)
+
+                         Positioned(
+                           left: 3,
+                           child: Container(
+                             width: 500,
+                             height: 120,
+
+                             child: Image(
+                              image: AssetImage('assets/images/headofseb7a.png'),
+                        ),
+                           ),
+                         ),
+
+
+
+                      Container(
+                        width: 400,
+                        height: 400,
+                          child: ImageRotation(
+                              imageToRotate: Image(image: AssetImage('assets/images/bodyofseb7a.png'),)
+                          ),
+                        ),
+                    ],
                   ),
 
                   Expanded(child: TasbeehCounterDisplay()),
