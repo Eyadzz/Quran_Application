@@ -36,10 +36,18 @@ class _ReadQuranState extends State<ReadQuran> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        title: Text("إسلامي", style: TextStyle(
+          color: Colors.black,
+          fontSize: 35,
+          fontWeight: FontWeight.bold,
+          fontFamily: "ElMessiri",
+        ),
+        ),
+        centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body: Container(
+      body:  Container(
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/bg3.png"),
@@ -55,11 +63,9 @@ class _ReadQuranState extends State<ReadQuran> {
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(height: 150),
-                  Text(SurahName, style: TextStyle(color: Colors.black,
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold)),
+                children:<Widget>[
+                  SizedBox(height:150),
+                  Text(SurahName, style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold)),
                   Container(
                       decoration: BoxDecoration(
                           image: DecorationImage(
@@ -67,25 +73,25 @@ class _ReadQuranState extends State<ReadQuran> {
                               image: AssetImage("assets/images/Line 4.png")
                           )
                       )),
-                  SizedBox(height: 10),
+                  SizedBox(height:10),
                   new Expanded(
                       flex: 1,
-                      child: new Container(
-                          margin: EdgeInsets.fromLTRB(40, 40, 40, 80),
+                      child:new Container(
+                          margin: EdgeInsets.fromLTRB(40, 40, 40,80),
                           child: new SingleChildScrollView(
                               scrollDirection: Axis.vertical,
                               child: new FutureBuilder(
                                   future: ReadData(SurahNum),
                                   builder: (BuildContext context,
                                       AsyncSnapshot<String>lines) {
-                                    if (lines.data != null) {
-                                      return new Text(lines.data!,
-                                          style: TextStyle(fontSize: 20));
+                                    if(lines.data!=null){
+                                      return new Directionality(textDirection: TextDirection.rtl, child:
+                                      Text(lines.data!,style: TextStyle(fontSize: 20))
+                                      );
                                     }
-                                    else {
+                                    else{
                                       return new Text('Nothing to show');
-                                    }
-                                  }
+                                    }}
                               )
                           )
                       )
