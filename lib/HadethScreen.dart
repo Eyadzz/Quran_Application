@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:quran_application/ReadQuran.dart';
+
 
 class HadethScreen extends StatefulWidget {
 
@@ -66,7 +68,7 @@ class _HadethState extends State<HadethScreen> {
                           padding: EdgeInsets.only(top: 0.0),
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
-                          itemBuilder: (context, index) => buildContent(hadethName.elementAt(index)),
+                          itemBuilder: (context, index) => buildContent(hadethName.elementAt(index),index+1),
                           itemCount: hadethName.length,
                         ),
                       ),
@@ -91,7 +93,7 @@ class _HadethState extends State<HadethScreen> {
     setState(() {});
   }
 
-  Widget buildContent(String name)
+  Widget buildContent(String name,int index)
   {
     return Row(
       children: [
@@ -102,7 +104,9 @@ class _HadethState extends State<HadethScreen> {
         Expanded(
           child: Container(
             child: TextButton(
-                onPressed: null, 
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(setSurah(name,index+1000))));
+                },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),
