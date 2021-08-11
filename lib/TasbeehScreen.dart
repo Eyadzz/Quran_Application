@@ -30,11 +30,9 @@ class TasbeehScreen extends StatelessWidget {
 
 
                            Positioned(
-                             left: 0,
+                             top: 15,
+                             left: 160,
                              child: Container(
-                               width: 420,
-                               height: 270,
-
                                child: Image(
                                 image: AssetImage('assets/images/headofseb7a.png'),
                           ),
@@ -44,10 +42,10 @@ class TasbeehScreen extends StatelessWidget {
 
 
                         Positioned(
-                          top: 0,
+                          top: 90,
+                          left: 80,
                           child: Container(
-                            width: 400,
-                              height: 550,
+
                               child: ImageRotation(
                                   imageToRotate: Image(image: AssetImage('assets/images/bodyofseb7a.png'),)
                               ),
