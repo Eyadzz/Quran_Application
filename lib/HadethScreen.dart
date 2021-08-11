@@ -60,7 +60,7 @@ class _HadethState extends State<HadethScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          header("الاحاديث", BoxDecoration(border: Border(left: BorderSide(color: colorTheme,width: 3,),bottom: BorderSide(color: colorTheme,width: 3,),top: BorderSide(color: colorTheme,width: 3,)))),
+                          header("الاحاديث", BoxDecoration(border: Border(bottom: BorderSide(color: colorTheme,width: 3,),top: BorderSide(color: colorTheme,width: 3,)))),
                         ],
                       ),
                       Expanded(
@@ -97,10 +97,6 @@ class _HadethState extends State<HadethScreen> {
   {
     return Row(
       children: [
-        Expanded(
-          child: Center(
-          ),
-        ),
         Expanded(
           child: Container(
             child: TextButton(
