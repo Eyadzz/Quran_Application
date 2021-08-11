@@ -10,7 +10,7 @@ class ReadQuran extends StatefulWidget {
   _ReadQuranState createState() => _ReadQuranState();
 }
 const String routeName="ReadQuran";
-String SurahName="الفاتحة";
+String SurahName="";
 int SurahNum=0;
 
 
@@ -24,8 +24,8 @@ String ConcreteSurahDisplay(List<String>Surah){
   String surahText='';
   AyahNum=1;
   for(var line in Surah){
-    surahText+=" ("+AyahNum.toString()+") ";
     surahText+=line;
+    surahText+=" ("+AyahNum.toString()+") ";
     AyahNum++;
   }
   return surahText;
@@ -78,7 +78,7 @@ class _ReadQuranState extends State<ReadQuran> {
                   new Expanded(
                       flex: 1,
                       child:new Container(
-                          margin: EdgeInsets.fromLTRB(40, 40, 40,80),
+                          margin: EdgeInsets.fromLTRB(40, 40, 40,100),
                           child: new SingleChildScrollView(
                               scrollDirection: Axis.vertical,
                               child: new FutureBuilder(
