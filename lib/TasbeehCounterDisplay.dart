@@ -40,14 +40,14 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
 
         ElevatedButton(
             onPressed: null,
-            child: Text('$_tasbeehCounter',textScaleFactor: 1.6),
+            child: Text('$_tasbeehCounter',textScaleFactor: 1.6,style: TextStyle(color: Colors.black.withOpacity(0.6)),),
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.teal),
+                backgroundColor: MaterialStateProperty.all(Color.fromRGBO(183, 147, 95,1).withAlpha(100)),
                 fixedSize: MaterialStateProperty.all(Size(70, 80)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25.0),
-                        side: BorderSide(color: Colors.teal))))
+                        )))
         ),
         ElevatedButton(
             onPressed: _incrementTasbeehCounter,

@@ -22,10 +22,7 @@ class TasbeehScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Text('اسلامى', textScaleFactor: 2.5),
-                  ),
+
                   Stack(
                     children: [
 
