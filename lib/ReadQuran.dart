@@ -24,8 +24,8 @@ String ConcreteSurahDisplay(List<String>Surah){
   String surahText='';
   AyahNum=1;
   for(var line in Surah){
-    surahText+=" ("+AyahNum.toString()+") ";
     surahText+=line;
+    surahText+="("+AyahNum.toString()+") ";
     AyahNum++;
   }
   return surahText;
