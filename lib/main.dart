@@ -12,10 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        TasbeehScreen.routeName:(context)=>TasbeehScreen(),
+        TasbeehScreen.routeName: (context) => TasbeehScreen(),
       },
       initialRoute: TasbeehScreen.routeName,
-
     );
   }
 }
