@@ -59,7 +59,6 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
             transform: Matrix4.rotationX((rotate ? 0 : -2) * 3.14159 / 2),
             alignment: Alignment.center,
             child: Container(
-              alignment: Alignment.center,
               child: imageToRotate,
             ),
           ),

@@ -17,12 +17,9 @@ class TasbeehScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Expanded(
-                    flex: 1,
+                  Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
                     child: Stack(
                       children: [
                         Positioned(
@@ -48,7 +45,6 @@ class TasbeehScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                ])
           ],
         ));
   }
