@@ -101,7 +101,7 @@ class _HadethState extends State<HadethScreen> {
           child: Container(
             child: TextButton(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(setSurah(name,index+1000))));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(displayContent(name,index+1000,false))));
                 },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,

@@ -91,6 +91,6 @@ flutter:
     - family: Sultann
       fonts:
         - asset: assets/fonts/Sultan.ttf
-    - family: contentFont
+    - family: DecoType
       fonts:
-        - asset: assets/fonts/MonotypeKoufiBold.ttf
+        - asset: assets/fonts/DecoType.ttf

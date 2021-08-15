@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quran_application/CustomBottomBar.dart';
 import 'package:quran_application/QuranScreen.dart';
+import 'package:quran_application/RadioSceen.dart';
 import 'package:quran_application/TasbeehScreen.dart';
 import 'package:quran_application/HadethScreen.dart';
 class Home extends StatefulWidget {
@@ -20,7 +21,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("إسلامي", style: TextStyle(
           color: Colors.black,
-          fontSize: 35,
+          fontSize: 30,
           fontWeight: FontWeight.bold,
           fontFamily: "ElMessiri",
         ),
@@ -34,9 +35,7 @@ class _HomeState extends State<Home> {
         onPageChanged: (int){},
         children: [
             QuranScreen(),
-            Container(
-              child: Center(child: Text("radio broke"),),
-            ),
+            RadioScreen(),
             TasbeehScreen(),
             HadethScreen(),
 

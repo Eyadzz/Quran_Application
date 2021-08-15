@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -10,25 +9,32 @@ class ReadQuran extends StatefulWidget {
   _ReadQuranState createState() => _ReadQuranState();
 }
 const String routeName="ReadQuran";
-String SurahName="";
-int SurahNum=0;
+String Name="";
+int Num=0;
+bool isSurah=true;
 
-
-setSurah(String Surah_Name,int Surah_Num){
-  SurahName=Surah_Name;
-  SurahNum=Surah_Num;
+displayContent(String name,int num, bool is_Surah){
+  Name=name;
+  Num=num;
+  isSurah = is_Surah;
 }
 int AyahNum=0;
 
-String ConcreteSurahDisplay(List<String>Surah){
-  String surahText='';
-  AyahNum=1;
-  for(var line in Surah){
-    surahText+=line;
-    surahText+="("+AyahNum.toString()+") ";
-    AyahNum++;
+String ConcreteSurahDisplay(String data){
+
+  if(isSurah) {
+    List<String> Surah = data.split('\n');
+    String surahText = '';
+    AyahNum = 1;
+    for (var line in Surah) {
+      surahText += line;
+      surahText += " (" + AyahNum.toString() + ") ";
+      AyahNum++;
+    }
+    return surahText;
   }
-  return surahText;
+  else
+   return data;
 }
 class _ReadQuranState extends State<ReadQuran> {
   @override
@@ -39,7 +45,7 @@ class _ReadQuranState extends State<ReadQuran> {
         leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.black,size: 30,), onPressed: (){Navigator.pop(context);},),
         title: Text("إسلامي", style: TextStyle(
           color: Colors.black,
-          fontSize: 35,
+          fontSize: 30,
           fontWeight: FontWeight.bold,
           fontFamily: "ElMessiri",
         ),
@@ -52,47 +58,48 @@ class _ReadQuranState extends State<ReadQuran> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/bg3.png"),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           child: Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.scaleDown,
-                      scale: 1.1,
+                      scale: 1.12,
                       image: AssetImage("assets/images/Rectangle 3.png",)
                   )
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:<Widget>[
-                  SizedBox(height:100),
-                  Text(SurahName, style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold)),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(50,0,50,0),
-                    child: Container(
-                      height: 3,
-                        color: Color.fromRGBO(183, 147, 95, 1),
-                        ),
-                  ),
+                  SizedBox(height:120),
+                  Text(Name, style: TextStyle(color: Colors.black,fontSize: 25,fontWeight: FontWeight.bold)),
+                  Container(
+                      height: 1,
+                      width: 270,
+                      color: Color.fromRGBO(183, 147, 95, 1),
+                      ),
                   new Expanded(
                       flex: 1,
                       child:new Container(
                           margin: EdgeInsets.fromLTRB(40, 40, 40,100),
                           child: new SingleChildScrollView(
                               scrollDirection: Axis.vertical,
-                              child: new FutureBuilder(
-                                  future: ReadData(SurahNum),
-                                  builder: (BuildContext context,
-                                      AsyncSnapshot<String>lines) {
-                                    if(lines.data!=null){
-                                      return new Directionality(textDirection: TextDirection.rtl, child:
-                                      Text(lines.data!,style: TextStyle(fontSize: 20))
-                                      );
-                                    }
-                                    else{
-                                      return new Text('Nothing to show');
-                                    }}
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: new FutureBuilder(
+                                    future: ReadData(Num),
+                                    builder: (BuildContext context,
+                                        AsyncSnapshot<String>lines) {
+                                      if(lines.data!=null){
+                                        return new Directionality(textDirection: TextDirection.rtl, child:
+                                        Text(lines.data!,style: TextStyle(fontSize: 20, fontFamily: "DecoType"))
+                                        );
+                                      }
+                                      else{
+                                        return new Text('Nothing to show');
+                                      }}
+                                ),
                               )
                           )
                       )
@@ -106,7 +113,6 @@ class _ReadQuranState extends State<ReadQuran> {
 
   Future<String> ReadData(int NumOfSurah) async {
     String data = await rootBundle.loadString('assets/txts/$NumOfSurah.txt');
-    List<String> lines = data.split('\n');
-    return ConcreteSurahDisplay(lines);
+    return ConcreteSurahDisplay(data);
   }
 }
