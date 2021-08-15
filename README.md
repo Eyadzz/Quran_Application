@@ -18,3 +18,11 @@ The application contains the following:
 ![Screenshot_1629045560](https://user-images.githubusercontent.com/66397595/129494013-bf4b0f68-ce2a-42d6-b9ec-f406e409cce7.png)
 ![Screenshot_1629045562](https://user-images.githubusercontent.com/66397595/129494015-1fe58907-b817-41fa-a9a7-d09853f1baee.png)
 ![Screenshot_1629045565](https://user-images.githubusercontent.com/66397595/129494016-441dc135-0638-4e55-8ce8-269b6039339e.png)
+
+## :dart: ​Clone the project
+
+> `$ git clone https://github.com/Eyadzz/Quran_Application`
+
+## :busts_in_silhouette:  Contributers
+
+> [Eyad Youssef](https://github.com/Eyadzz), [Abdelrahman Ali](https://github.com/abdelrahmanali6), [Abdelrahman Ammar](https://github.com/Abdelrhman-ammar), [Khaled Samir](https://github.com/khaledsamirr) and [Omar Muhammed](https://github.com/OmarMohamed256)
