@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quran_application/AppConfigProvider.dart';
 import 'package:quran_application/QuranScreen.dart';
+import 'package:quran_application/RadioSceen.dart';
 import 'package:quran_application/TasbeehScreen.dart';
 import 'package:quran_application/HadethScreen.dart';
 import 'OptionalThemeData.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
             SplashCustom.routeName: (context) => SplashCustom(),
             TasbeehScreen.routeName: (context) => TasbeehScreen(),
             HadethScreen.routeName: (context) => HadethScreen(),
+            RadioScreen.routeName:(context)=>RadioScreen(),
           },
         );
       },

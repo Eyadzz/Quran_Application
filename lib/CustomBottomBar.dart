@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quran_application/QuranScreen.dart';
 import 'package:quran_application/TasbeehScreen.dart';
+import 'package:quran_application/RadioSceen.dart';
 import 'package:provider/provider.dart';
 import 'AppConfigProvider.dart';
 
@@ -12,7 +13,7 @@ class CustomBottomBar extends StatefulWidget {
   final quranPageName = QuranScreen.routeName;
   final hasdisPageName = QuranScreen.routeName;
   final sebhaPageName = TasbeehScreen.routeName;
-  final radioPageName = QuranScreen.routeName;
+  final radioPageName = RadioScreen.routeName;
 
   final mypage;
   @override
@@ -67,7 +68,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                   });
                 },
                 icon: ImageIcon(
-                  AssetImage("assets/images/radio_blue@3x.png"),
+                  AssetImage("assets/images/radio_blue.png"),
                   color: changeColor(1, currentIndex),
                   size: widget.iconSize,
                 ),
@@ -81,7 +82,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                   });
                 },
                 icon: ImageIcon(
-                  AssetImage("assets/images/sebha_blue@3x.png"),
+                  AssetImage("assets/images/sebha_blue.png"),
                   //color: widget.iconColor,
                   color: changeColor(2, currentIndex),
                   size: widget.iconSize,
@@ -96,7 +97,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                   });
                 },
                 icon: ImageIcon(
-                  AssetImage("assets/images/moshaf@3x.png"),
+                  AssetImage("assets/images/Group 6.png"),
                   //color: widget.iconColor,
                   color: changeColor(3, currentIndex),
                   size: widget.iconSize,
