@@ -57,7 +57,9 @@ class _SideMenuState extends State<SideMenu>{
 
               child: Container(
                   padding:EdgeInsets.symmetric(vertical:12),
-                  child: Text('Dark',textAlign: TextAlign.center,)
+                  child: provider.isDarkTheme()?
+                  Text('Dark',textAlign: TextAlign.center, style: TextStyle(color: Colors.black),):
+                  Text('Dark',textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
               ),
             ),
             InkWell(
@@ -67,8 +69,8 @@ class _SideMenuState extends State<SideMenu>{
               child: Container(
                   padding:EdgeInsets.symmetric(vertical:12),
                   child: provider.isDarkTheme()?
-                  Text('Light',textAlign: TextAlign.center, style: TextStyle(color: Colors.red),):
-                  Text('Light',textAlign: TextAlign.center, style: TextStyle(color: Colors.grey))
+                  Text('Light',textAlign: TextAlign.center, style: TextStyle(color: Colors.white),):
+                  Text('Light',textAlign: TextAlign.center, style: TextStyle(color: Colors.black))
               ),
             )
           ],
