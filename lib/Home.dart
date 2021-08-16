@@ -3,6 +3,9 @@ import 'package:quran_application/CustomBottomBar.dart';
 import 'package:quran_application/QuranScreen.dart';
 import 'package:quran_application/TasbeehScreen.dart';
 import 'package:quran_application/HadethScreen.dart';
+import 'package:provider/provider.dart';
+import 'AppConfigProvider.dart';
+import 'SideMenu.dart';
 class Home extends StatefulWidget {
   static const routeName = 'home';
   @override
@@ -10,16 +13,18 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
+  late AppConfigProvider provider;
   PageController _myPage = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
+      drawer: SideMenu(),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text("إسلامي", style: TextStyle(
-          color: Colors.black,
+          color: provider.isDarkTheme()?Colors.white:Colors.black,
           fontSize: 35,
           fontWeight: FontWeight.bold,
           fontFamily: "ElMessiri",
@@ -33,15 +38,15 @@ class _HomeState extends State<Home> {
         controller: _myPage,
         onPageChanged: (int){},
         children: [
-            QuranScreen(),
-            Container(
-              child: Center(child: Text("radio broke"),),
-            ),
-            TasbeehScreen(),
-            HadethScreen(),
+          QuranScreen(),
+          Container(
+            child: Center(child: Text("radio broke"),),
+          ),
+          TasbeehScreen(),
+          HadethScreen(),
 
         ],
-    ),
+      ),
       bottomNavigationBar: CustomBottomBar(mypage: _myPage),
     );
   }
