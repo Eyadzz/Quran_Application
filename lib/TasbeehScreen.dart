@@ -17,7 +17,7 @@ class TasbeehScreen extends StatelessWidget {
               decoration: new BoxDecoration(
                 image: new DecorationImage(
                   image: provider.isDarkTheme()? new AssetImage("assets/images/bg.png"): new AssetImage("assets/images/bg3.png"),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -28,7 +28,7 @@ class TasbeehScreen extends StatelessWidget {
                 children: [
                   Positioned(
                     top: 100,
-                    left: 160,
+                    left: 180,
                     child: Container(
                       child: Image(
                         image: provider.isDarkTheme()? AssetImage('assets/images/head of seb7a.png'):AssetImage('assets/images/headofseb7a.png'),

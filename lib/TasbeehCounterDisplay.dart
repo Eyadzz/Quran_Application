@@ -77,7 +77,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
           height: 10,
         ),
 
-        Text('عدد التسبيحات',style: TextStyle(color: provider.isDarkTheme()?Colors.white: Colors.black,), textScaleFactor: 2.5),
+        Text('عدد التسبيحات',style: TextStyle(color: provider.isDarkTheme()?Colors.white: Colors.black, fontFamily: "ElMessiri", ), textScaleFactor: 2,),
         SizedBox(
           height: 20,
         ),
@@ -87,11 +87,11 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
             child: Text(
               '$_tasbeehCounter',
               textScaleFactor: 1.6,
-              style: TextStyle(color: provider.isDarkTheme()? Colors.white: Colors.black.withOpacity(0.6)),
+              style: TextStyle(color: provider.isDarkTheme()? Colors.white: Colors.black.withOpacity(0.6), fontWeight: FontWeight.bold),
             ),
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
-                    Color.fromRGBO(183, 147, 95, 1).withAlpha(100)),
+                    provider.isDarkTheme()?Color.fromRGBO(20, 26,46, 1) : Color.fromRGBO(183, 147, 95, 1).withAlpha(100)),
                 minimumSize: MaterialStateProperty.all(Size(60,80)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
@@ -103,7 +103,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
 
         ElevatedButton(
             onPressed: null,
-            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: provider.isDarkTheme()? Colors.black: Colors.white.withOpacity(1))),
+            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: provider.isDarkTheme()? Colors.black: Colors.white.withOpacity(1),fontFamily: "Sultann",)),
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(provider.isDarkTheme()? Color.fromRGBO(252,196,64,1):Color.fromRGBO(183, 147, 95, 1)),
                 minimumSize: MaterialStateProperty.all(Size(150,40)),

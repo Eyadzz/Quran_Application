@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("إسلامي", style: TextStyle(
           color: provider.isDarkTheme()?Colors.white:Colors.black,
-          fontSize: 35,
+          fontSize: 30,
           fontWeight: FontWeight.bold,
           fontFamily: "ElMessiri",
         ),

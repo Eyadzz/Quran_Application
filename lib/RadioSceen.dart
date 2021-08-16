@@ -21,6 +21,7 @@ class RadioScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: 80),
             Image.asset("assets/images/radio.png"),
             SizedBox(height: 50),
             Text("إذاعة القرآن الكريم",
@@ -36,11 +37,11 @@ class RadioScreen extends StatelessWidget {
                 SizedBox(width: 70,),
                 // Image.asset("assets/images/icon_prev.png"),
                 IconButton(icon: Image.asset("assets/images/icon_prev.png"), color: colorTheme, onPressed: () {}),
-                SizedBox(width: 55,),
+                SizedBox(width: 50,),
                 IconButton(icon: Image.asset("assets/images/icon_play.png"), color: colorTheme, onPressed: () {}),
-                SizedBox(width: 55,),
+                SizedBox(width: 50,),
                 IconButton(icon: Image.asset("assets/images/icon_next.png"), color: colorTheme, onPressed: () {}),
-                SizedBox(width: 55,),
+                SizedBox(width: 50,),
               ],
             ),
           ],

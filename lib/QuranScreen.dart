@@ -113,9 +113,9 @@ class _QuranScreenState extends State<QuranScreen> {
         Expanded(
           child: Center(
             child: provider.isDarkTheme()? Text(
-              name,
+              number,
               style: textContentStyleDarkTheme,
-            ): Text (name,style: textContentStyle),
+            ): Text (number,style: textContentStyle),
           ),
         ),
         Expanded(
@@ -123,7 +123,7 @@ class _QuranScreenState extends State<QuranScreen> {
             decoration: BoxDecoration(border: Border(left: BorderSide(color: provider.isDarkTheme()? colorDarkTheme: colorTheme,width: 3,))),
             child: TextButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(setSurah(name,index))));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(displayContent(name,index,true))));
               },
               style: TextButton.styleFrom(
                 padding: EdgeInsets.zero,
