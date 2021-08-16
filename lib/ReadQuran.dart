@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:provider/provider.dart';
+import 'AppConfigProvider.dart';
 
 class ReadQuran extends StatefulWidget {
   const ReadQuran(setSurah, {key}) : super(key: key);
@@ -31,14 +31,17 @@ String ConcreteSurahDisplay(List<String>Surah){
   return surahText;
 }
 class _ReadQuranState extends State<ReadQuran> {
+  late AppConfigProvider provider;
+  var colorDarkTheme = Color.fromRGBO(252,196,64,1);
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.black,size: 30,), onPressed: (){Navigator.pop(context);},),
+        leading: IconButton(icon: Icon(Icons.arrow_back, color: provider.isDarkTheme()? Colors.white:Colors.black,size: 30,), onPressed: (){Navigator.pop(context);},),
         title: Text("إسلامي", style: TextStyle(
-          color: Colors.black,
+          color: provider.isDarkTheme()? Colors.white: Colors.black,
           fontSize: 35,
           fontWeight: FontWeight.bold,
           fontFamily: "ElMessiri",
@@ -51,29 +54,29 @@ class _ReadQuranState extends State<ReadQuran> {
       body:  Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/bg3.png"),
+              image: provider.isDarkTheme()? AssetImage("assets/images/bg.png"): AssetImage("assets/images/bg3.png"),
               fit: BoxFit.cover,
             ),
           ),
           child: Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      fit: BoxFit.scaleDown,
-                      scale: 1.1,
-                      image: AssetImage("assets/images/Rectangle 3.png",)
+                    fit: BoxFit.scaleDown,
+                    scale: 1.1,
+                    image: provider.isDarkTheme()? AssetImage("assets/images/Rectangle_darkTheme.png"):AssetImage("assets/images/Rectangle 3.png"),
                   )
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:<Widget>[
                   SizedBox(height:100),
-                  Text(SurahName, style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold)),
+                  Text(SurahName, style: TextStyle(color: provider.isDarkTheme()? colorDarkTheme:Colors.black ,fontSize: 35,fontWeight: FontWeight.bold)),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50,0,50,0),
                     child: Container(
                       height: 3,
-                        color: Color.fromRGBO(183, 147, 95, 1),
-                        ),
+                      color: provider.isDarkTheme()? colorDarkTheme:Color.fromRGBO(183, 147, 95, 1),
+                    ),
                   ),
                   new Expanded(
                       flex: 1,
@@ -87,7 +90,7 @@ class _ReadQuranState extends State<ReadQuran> {
                                       AsyncSnapshot<String>lines) {
                                     if(lines.data!=null){
                                       return new Directionality(textDirection: TextDirection.rtl, child:
-                                      Text(lines.data!,style: TextStyle(fontSize: 20))
+                                      Text(lines.data! ,style: TextStyle(fontSize: 20,color: provider.isDarkTheme()? colorDarkTheme:Colors.grey,))
                                       );
                                     }
                                     else{

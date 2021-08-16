@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'AppConfigProvider.dart';
 
 class TasbeehCounterDisplay extends StatefulWidget {
   TasbeehCounterDisplay({Key? key, required this.imageToRotate}) : super(key: key);
@@ -10,6 +12,7 @@ class TasbeehCounterDisplay extends StatefulWidget {
 }
 
 class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
+  late AppConfigProvider provider;
   int _tasbeehCounter = 0;
   String tasbeehButtonLabel = 'سبحان الله';
   late Image imageToRotate;
@@ -50,6 +53,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
 
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
@@ -73,7 +77,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
           height: 10,
         ),
 
-        Text('عدد التسبيحات', textScaleFactor: 2.5),
+        Text('عدد التسبيحات',style: TextStyle(color: provider.isDarkTheme()?Colors.white: Colors.black,), textScaleFactor: 2.5),
         SizedBox(
           height: 20,
         ),
@@ -83,7 +87,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
             child: Text(
               '$_tasbeehCounter',
               textScaleFactor: 1.6,
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
+              style: TextStyle(color: provider.isDarkTheme()? Colors.white: Colors.black.withOpacity(0.6)),
             ),
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
@@ -99,14 +103,14 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
 
         ElevatedButton(
             onPressed: null,
-            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: Colors.white.withOpacity(1))),
+            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: provider.isDarkTheme()? Colors.black: Colors.white.withOpacity(1))),
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Color.fromRGBO(183, 147, 95, 1)),
+                backgroundColor: MaterialStateProperty.all(provider.isDarkTheme()? Color.fromRGBO(252,196,64,1):Color.fromRGBO(183, 147, 95, 1)),
                 minimumSize: MaterialStateProperty.all(Size(150,40)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25.0),
-                        side: BorderSide(color: Color.fromRGBO(183, 147, 95, 1))))))
+                        side: BorderSide(color:Color.fromRGBO(183, 147, 95, 1))))))
       ],
     );
   }
