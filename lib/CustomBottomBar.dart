@@ -27,9 +27,9 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
 
   changeColor(index, currentIndex){
     if(index == currentIndex){
-      return activeColor;
+      return provider.isDarkTheme()? Colors.white:activeColor;
     }else{
-      return mainColor;
+      return provider.isDarkTheme()? Color.fromRGBO(252,196,64,1):mainColor;
     }
   }
 
