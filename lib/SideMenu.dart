@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quran_application/AppConfigProvider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({Key? key}) : super(key: key);
@@ -10,8 +13,11 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
+  late AppConfigProvider provider;
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
+
     return  Drawer(
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 90,horizontal: 0),
@@ -26,7 +32,7 @@ class _SideMenuState extends State<SideMenu> {
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 12),
-                    child: Text('Language'),
+                    child: Text(AppLocalizations.of(context)!.language),
                   ),
                 ),
 
