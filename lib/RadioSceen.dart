@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class RadioScreen extends StatelessWidget {
   static const routeName = "radio";
   var colorTheme = Color.fromRGBO(183, 147, 95, 1);
@@ -19,7 +19,7 @@ class RadioScreen extends StatelessWidget {
           children: [
             Image.asset("assets/images/radio.png"),
             SizedBox(height: 50),
-            Text("إذاعة القرآن الكريم",
+            Text(AppLocalizations.of(context)!.radio,
               style: TextStyle(
                 fontSize: 25,
                 fontFamily: "ElMessiri",

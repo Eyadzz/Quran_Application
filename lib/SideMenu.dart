@@ -17,14 +17,11 @@ class _SideMenuState extends State<SideMenu> {
   @override
   Widget build(BuildContext context) {
     provider = Provider.of<AppConfigProvider>(context);
-
     return  Drawer(
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 90,horizontal: 0),
-
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-
               children: [
                 InkWell(
                   onTap: (){
@@ -42,7 +39,7 @@ class _SideMenuState extends State<SideMenu> {
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 12),
-                    child: Text('Theme'),
+                    child: Text(AppLocalizations.of(context)!.theme),
                   ),
                 ),
               ],
@@ -60,20 +57,21 @@ class _SideMenuState extends State<SideMenu> {
           children: [
             InkWell(
               onTap: (){
-
+                provider.changeLanguage('en');
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text('English',textAlign: TextAlign.center,),
+                child: Text(AppLocalizations.of(buildContext)!.english,textAlign: TextAlign.center,),
               ),
             ),
 
             InkWell(
               onTap: (){
+                provider.changeLanguage('ar');
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text('العربية',textAlign: TextAlign.center),
+                child: Text(AppLocalizations.of(buildContext)!.arabic,textAlign: TextAlign.center),
               ),
             ),
           ],
@@ -95,7 +93,7 @@ class _SideMenuState extends State<SideMenu> {
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text('Dark',textAlign: TextAlign.center,),
+                child: Text(AppLocalizations.of(context)!.dark,textAlign: TextAlign.center,),
               ),
             ),
 
@@ -105,7 +103,7 @@ class _SideMenuState extends State<SideMenu> {
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text('Light',textAlign: TextAlign.center),
+                child: Text(AppLocalizations.of(context)!.light,textAlign: TextAlign.center),
               ),
             ),
           ],

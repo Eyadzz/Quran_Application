@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TasbeehCounterDisplay extends StatefulWidget {
   TasbeehCounterDisplay({Key? key, required this.imageToRotate})
@@ -51,6 +52,13 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
 
   @override
   Widget build(BuildContext context) {
+    var textContentStyle = TextStyle(
+      fontSize: 25,
+      color: Colors.black,
+      fontFamily: "Sultann",
+
+    );
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
@@ -72,7 +80,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
         SizedBox(
           height: 10,
         ),
-        Text('عدد التسبيحات', textScaleFactor: 2.5),
+        Text(AppLocalizations.of(context)!.numOfTasbeehat,style: textContentStyle),
         SizedBox(
           height: 20,
         ),

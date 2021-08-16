@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:quran_application/ReadQuran.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class HadethScreen extends StatefulWidget {
@@ -60,7 +61,7 @@ class _HadethState extends State<HadethScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          header("الاحاديث", BoxDecoration(border: Border(bottom: BorderSide(color: colorTheme,width: 3,),top: BorderSide(color: colorTheme,width: 3,)))),
+                          header(AppLocalizations.of(context)!.hadith, BoxDecoration(border: Border(bottom: BorderSide(color: colorTheme,width: 3,),top: BorderSide(color: colorTheme,width: 3,)))),
                         ],
                       ),
                       Expanded(

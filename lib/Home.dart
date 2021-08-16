@@ -5,6 +5,8 @@ import 'package:quran_application/RadioSceen.dart';
 import 'package:quran_application/SideMenu.dart';
 import 'package:quran_application/TasbeehScreen.dart';
 import 'package:quran_application/HadethScreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Home extends StatefulWidget {
   static const routeName = 'home';
   @override
@@ -23,7 +25,7 @@ class _HomeState extends State<Home> {
       drawer: SideMenu(),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text("إسلامي", style: TextStyle(
+        title: Text(AppLocalizations.of(context)!.title, style: TextStyle(
           color: Colors.black,
           fontSize: 30,
           fontWeight: FontWeight.bold,

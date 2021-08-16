@@ -1,7 +1,10 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:quran_application/ReadQuran.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranScreen extends StatefulWidget {
 
@@ -59,8 +62,8 @@ class _QuranScreenState extends State<QuranScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      header("عدد الآيات",  BoxDecoration(border: Border(bottom: BorderSide(color: colorTheme,width: 3,),top: BorderSide(color: colorTheme,width: 3,)))),
-                      header("اسم السورة", BoxDecoration(border: Border(left: BorderSide(color: colorTheme,width: 3,),bottom: BorderSide(color: colorTheme,width: 3,),top: BorderSide(color: colorTheme,width: 3,)))),
+                      header(AppLocalizations.of(context)!.numOfVerses,  BoxDecoration(border: Border(bottom: BorderSide(color: colorTheme,width: 3,),top: BorderSide(color: colorTheme,width: 3,)))),
+                      header(AppLocalizations.of(context)!.surahName, BoxDecoration(border: Border(left: BorderSide(color: colorTheme,width: 3,),bottom: BorderSide(color: colorTheme,width: 3,),top: BorderSide(color: colorTheme,width: 3,)))),
                     ],
                   ),
                   Expanded(
