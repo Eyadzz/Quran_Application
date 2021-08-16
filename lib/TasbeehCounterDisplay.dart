@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TasbeehCounterDisplay extends StatefulWidget {
-  TasbeehCounterDisplay({Key? key, required this.imageToRotate}) : super(key: key);
+  TasbeehCounterDisplay({Key? key, required this.imageToRotate})
+      : super(key: key);
   final Image imageToRotate;
 
   @override
@@ -53,7 +54,6 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-
         GestureDetector(
           child: Transform(
             transform: Matrix4.rotationX((rotate ? 0 : -2) * 3.14159 / 2),
@@ -72,12 +72,10 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
         SizedBox(
           height: 10,
         ),
-
         Text('عدد التسبيحات', textScaleFactor: 2.5),
         SizedBox(
           height: 20,
         ),
-
         ElevatedButton(
             onPressed: null,
             child: Text(
@@ -88,25 +86,28 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
                     Color.fromRGBO(183, 147, 95, 1).withAlpha(100)),
-                minimumSize: MaterialStateProperty.all(Size(60,80)),
+                minimumSize: MaterialStateProperty.all(Size(60, 80)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                    )))),
+                  borderRadius: BorderRadius.circular(25.0),
+                )))),
         SizedBox(
           height: 10,
         ),
-
         ElevatedButton(
             onPressed: null,
-            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: Colors.white.withOpacity(1))),
+            child: Text(tasbeehButtonLabel,
+                textScaleFactor: 1.6,
+                style: TextStyle(color: Colors.white.withOpacity(1))),
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Color.fromRGBO(183, 147, 95, 1)),
-                minimumSize: MaterialStateProperty.all(Size(150,40)),
+                backgroundColor:
+                    MaterialStateProperty.all(Color.fromRGBO(183, 147, 95, 1)),
+                minimumSize: MaterialStateProperty.all(Size(150, 40)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25.0),
-                        side: BorderSide(color: Color.fromRGBO(183, 147, 95, 1))))))
+                        side: BorderSide(
+                            color: Color.fromRGBO(183, 147, 95, 1))))))
       ],
     );
   }

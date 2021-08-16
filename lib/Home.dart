@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quran_application/CustomBottomBar.dart';
 import 'package:quran_application/QuranScreen.dart';
 import 'package:quran_application/RadioSceen.dart';
+import 'package:quran_application/SideMenu.dart';
 import 'package:quran_application/TasbeehScreen.dart';
 import 'package:quran_application/HadethScreen.dart';
 class Home extends StatefulWidget {
@@ -9,6 +10,7 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
+final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
 class _HomeState extends State<Home> {
 
@@ -17,6 +19,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
+      drawer: SideMenu(),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text("إسلامي", style: TextStyle(
@@ -38,7 +42,6 @@ class _HomeState extends State<Home> {
             RadioScreen(),
             TasbeehScreen(),
             HadethScreen(),
-
         ],
     ),
       bottomNavigationBar: CustomBottomBar(mypage: _myPage),
