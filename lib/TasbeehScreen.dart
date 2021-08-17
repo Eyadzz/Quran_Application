@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'TasbeehCounterDisplay.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TasbeehScreen extends StatelessWidget {
   static const routeName = 'tasbeeh';

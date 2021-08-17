@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TasbeehCounterDisplay extends StatefulWidget {
-  TasbeehCounterDisplay({Key? key, required this.imageToRotate}) : super(key: key);
+  TasbeehCounterDisplay({Key? key, required this.imageToRotate})
+      : super(key: key);
   final Image imageToRotate;
 
   @override
@@ -50,63 +52,70 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
 
   @override
   Widget build(BuildContext context) {
+    var textContentStyle = TextStyle(
+      fontSize: 25,
+      color: Colors.black,
+      fontFamily: "Sultann",
+
+    );
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-
-        GestureDetector(
-          child: Transform(
-            transform: Matrix4.rotationX((rotate ? 0 : -2) * 3.14159 / 2),
+        InkWell(
+          onTap:(){
+            rotate = !rotate;
+            _incrementTasbeehCounter();
+        },
+          child: Container(
             alignment: Alignment.center,
-            child: Container(
-              child: imageToRotate,
+            child:Transform(
+              transform: Matrix4.rotationX((rotate ? 0 : -2) * 3.14159 / 2),
+              alignment: Alignment.center,
+              child: Container(
+                child: imageToRotate,
+              ),
             ),
           ),
-          onTap: () {
-            setState(() {
-              rotate = !rotate;
-              _incrementTasbeehCounter();
-            });
-          },
         ),
         SizedBox(
           height: 10,
         ),
-
-        Text('عدد التسبيحات', textScaleFactor: 2.5),
+        Text(AppLocalizations.of(context)!.numOfTasbeehat,style: textContentStyle),
         SizedBox(
           height: 20,
         ),
 
-        ElevatedButton(
-            onPressed: null,
-            child: Text(
-              '$_tasbeehCounter',
-              textScaleFactor: 1.6,
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            ),
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                    Color.fromRGBO(183, 147, 95, 1).withAlpha(100)),
-                minimumSize: MaterialStateProperty.all(Size(60,80)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                    )))),
+        Container(
+          width: 60,
+          height: 80,
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(183, 147, 95, 1).withAlpha(100),
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: Text(
+            '$_tasbeehCounter',
+            textScaleFactor: 1.6,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black.withOpacity(0.6),height: 2.5),
+          ),
+        ),
         SizedBox(
           height: 10,
         ),
 
-        ElevatedButton(
-            onPressed: null,
-            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: Colors.white.withOpacity(1))),
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Color.fromRGBO(183, 147, 95, 1)),
-                minimumSize: MaterialStateProperty.all(Size(150,40)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        side: BorderSide(color: Color.fromRGBO(183, 147, 95, 1))))))
+        Container(
+          width: 150,
+          height: 40,
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(183, 147, 95, 1),
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: Text(tasbeehButtonLabel,
+              textScaleFactor: 1.6,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white.withOpacity(1))),
+        ),
       ],
     );
   }

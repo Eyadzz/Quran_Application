@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quran_application/QuranScreen.dart';
 import 'package:quran_application/RadioSceen.dart';
 import 'package:quran_application/TasbeehScreen.dart';
+import 'Home.dart';
 class CustomBottomBar extends StatefulWidget {
   const CustomBottomBar ({Key? key, this.mypage}) : super(key: key);
   static const routeName = "home";
@@ -99,6 +100,16 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                   size: widget.iconSize,
                 ),
               ),
+
+              IconButton(
+                onPressed: (){
+                  scaffoldKey.currentState!.openDrawer();
+                },
+                icon: ImageIcon(
+                  AssetImage("assets/images/settings.png"),
+                ),
+              ),
+
             ],
           ),
         )

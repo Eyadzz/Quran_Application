@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class ReadQuran extends StatefulWidget {
@@ -43,7 +44,7 @@ class _ReadQuranState extends State<ReadQuran> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.black,size: 30,), onPressed: (){Navigator.pop(context);},),
-        title: Text("إسلامي", style: TextStyle(
+        title: Text(AppLocalizations.of(context)!.title, style: TextStyle(
           color: Colors.black,
           fontSize: 30,
           fontWeight: FontWeight.bold,

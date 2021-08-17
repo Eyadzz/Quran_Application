@@ -1,0 +1,14 @@
+{
+    "language": "Language",
+    "theme": "Theme",
+    "dark":"Dark Mode",
+    "light":"Light Mode",
+    "english":"English",
+    "arabic":"Arabic",
+    "title":"Islami",
+    "surahName":"Surah Name",
+     "numOfVerses":"Verses Number",
+     "numOfTasbeehat":"Tasbeehat Number",
+     "radio":"Quran Radio",
+     "hadith":"Hadith"
+}
