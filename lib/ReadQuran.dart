@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:provider/provider.dart';
+import 'AppConfigProvider.dart';
 
 class ReadQuran extends StatefulWidget {
   const ReadQuran(setSurah, {key}) : super(key: key);
@@ -37,15 +39,19 @@ String ConcreteSurahDisplay(String data){
   else
    return data;
 }
+
 class _ReadQuranState extends State<ReadQuran> {
+  late AppConfigProvider provider;
+  var colorDarkTheme = Color.fromRGBO(252,196,64,1);
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.black,size: 30,), onPressed: (){Navigator.pop(context);},),
+        leading: IconButton(icon: Icon(Icons.arrow_back, color: provider.isDarkTheme()? Colors.white:Colors.black,size: 30,), onPressed: (){Navigator.pop(context);},),
         title: Text(AppLocalizations.of(context)!.title, style: TextStyle(
-          color: Colors.black,
+          color: provider.isDarkTheme()? Colors.white: Colors.black,
           fontSize: 30,
           fontWeight: FontWeight.bold,
           fontFamily: "ElMessiri",
@@ -58,32 +64,32 @@ class _ReadQuranState extends State<ReadQuran> {
       body:  Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/bg3.png"),
+              image: provider.isDarkTheme()? AssetImage("assets/images/bg.png"): AssetImage("assets/images/bg3.png"),
               fit: BoxFit.fill,
             ),
           ),
           child: Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      fit: BoxFit.scaleDown,
-                      scale: 1.12,
-                      image: AssetImage("assets/images/Rectangle 3.png",)
+                    fit: BoxFit.scaleDown,
+                    scale: 1.12,
+                    image: provider.isDarkTheme()? AssetImage("assets/images/Rectangle_darkTheme.png"):AssetImage("assets/images/Rectangle 3.png"),
                   )
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:<Widget>[
                   SizedBox(height:120),
-                  Text(Name, style: TextStyle(color: Colors.black,fontSize: 25,fontWeight: FontWeight.bold)),
+                  Text(Name, style: Theme.of(context).textTheme.headline2),
                   Container(
-                      height: 1,
-                      width: 270,
-                      color: Color.fromRGBO(183, 147, 95, 1),
-                      ),
+                    height: 1,
+                    width: 270,
+                    color: provider.isDarkTheme()? colorDarkTheme: Color.fromRGBO(183, 147, 95, 1),
+                  ),
                   new Expanded(
                       flex: 1,
                       child:new Container(
-                          margin: EdgeInsets.fromLTRB(40, 40, 40,100),
+                          margin: EdgeInsets.fromLTRB(40, 10, 40,100),
                           child: new SingleChildScrollView(
                               scrollDirection: Axis.vertical,
                               child: Padding(
@@ -94,7 +100,7 @@ class _ReadQuranState extends State<ReadQuran> {
                                         AsyncSnapshot<String>lines) {
                                       if(lines.data!=null){
                                         return new Directionality(textDirection: TextDirection.rtl, child:
-                                        Text(lines.data!,style: TextStyle(fontSize: 20, fontFamily: "DecoType"))
+                                        Text(lines.data! ,style: Theme.of(context).textTheme.bodyText2)
                                         );
                                       }
                                       else{

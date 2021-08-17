@@ -1,18 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'AppConfigProvider.dart';
 import 'package:quran_application/AppConfigProvider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SideMenu extends StatefulWidget {
-  const SideMenu({Key? key}) : super(key: key);
-  static const routeName = 'side menu';
 
-  @override
-  _SideMenuState createState() => _SideMenuState();
-}
-
-class _SideMenuState extends State<SideMenu> {
+class _SideMenuState extends State<SideMenu>{
   late AppConfigProvider provider;
   @override
   Widget build(BuildContext context) {
@@ -113,3 +107,4 @@ class _SideMenuState extends State<SideMenu> {
   }
 
 }
+

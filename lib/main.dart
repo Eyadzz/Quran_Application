@@ -6,6 +6,7 @@ import 'package:quran_application/QuranScreen.dart';
 import 'package:quran_application/RadioSceen.dart';
 import 'package:quran_application/TasbeehScreen.dart';
 import 'package:quran_application/HadethScreen.dart';
+import 'OptionalThemeData.dart';
 import 'SplashCustom.dart';
 import 'Home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -22,7 +23,9 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(create: (buildContext) => AppConfigProvider(),
       builder: (buildContext,widget){
       final provider=Provider.of<AppConfigProvider>(buildContext);
-        return MaterialApp(
+        return MaterialApp(themeMode: provider.themeMode,
+          darkTheme: OptionalThemeData.darkTheme,
+          theme: OptionalThemeData.lightTheme,
           localizationsDelegates:[
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -44,7 +47,6 @@ class MyApp extends StatelessWidget {
           },
 
         );
-
       },
     );
 

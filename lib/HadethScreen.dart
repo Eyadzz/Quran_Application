@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:quran_application/ReadQuran.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:provider/provider.dart';
+import 'AppConfigProvider.dart';
 
 class HadethScreen extends StatefulWidget {
 
@@ -14,16 +16,12 @@ class HadethScreen extends StatefulWidget {
 }
 
 class _HadethState extends State<HadethScreen> {
+  late AppConfigProvider provider;
   var hadethName=[];
   var colorTheme = Color.fromRGBO(183, 147, 95, 1);
-  var textContentStyle = TextStyle(
-    fontSize: 25,
-    color: Colors.black,
-    fontFamily: "Sultann",
+  var colorDarkTheme = Color.fromRGBO(252,196,64,1);
 
-  );
-
- @override
+  @override
   void  initState(){
     getContent();
     super.initState();
@@ -31,6 +29,7 @@ class _HadethState extends State<HadethScreen> {
 
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
         extendBodyBehindAppBar: true,
         body: Stack(
@@ -39,7 +38,7 @@ class _HadethState extends State<HadethScreen> {
             Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/bg3.png"),
+                  image: provider.isDarkTheme()? AssetImage("assets/images/bg.png"): AssetImage("assets/images/bg3.png"),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -61,7 +60,7 @@ class _HadethState extends State<HadethScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          header(AppLocalizations.of(context)!.hadith, BoxDecoration(border: Border(bottom: BorderSide(color: colorTheme,width: 3,),top: BorderSide(color: colorTheme,width: 3,)))),
+                          header(AppLocalizations.of(context)!.hadith, BoxDecoration(border: Border(bottom: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),top: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,)))),
                         ],
                       ),
                       Expanded(
@@ -101,16 +100,16 @@ class _HadethState extends State<HadethScreen> {
         Expanded(
           child: Container(
             child: TextButton(
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(displayContent(name,index+1000,false))));
-                },
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                ),
-                child: Text(
-                  name,
-                  style: textContentStyle,
-                )
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(displayContent(name,index+1000,false))));
+              },
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.all(8.0),
+              ),
+              child:  Text(
+                name,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
             ),
           ),
         ),
@@ -125,10 +124,7 @@ class _HadethState extends State<HadethScreen> {
         decoration: containerBorders,
         child: Center(
           child: Text(text,
-            style: TextStyle(
-              fontSize: 25,
-              fontFamily: "ElMessiri",
-            ),
+            style: Theme.of(context).textTheme.headline1
           ),
         ),
       ),

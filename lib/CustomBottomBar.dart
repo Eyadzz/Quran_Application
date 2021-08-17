@@ -3,6 +3,10 @@ import 'package:quran_application/QuranScreen.dart';
 import 'package:quran_application/RadioSceen.dart';
 import 'package:quran_application/TasbeehScreen.dart';
 import 'Home.dart';
+import 'package:quran_application/RadioSceen.dart';
+import 'package:provider/provider.dart';
+import 'AppConfigProvider.dart';
+
 class CustomBottomBar extends StatefulWidget {
   const CustomBottomBar ({Key? key, this.mypage}) : super(key: key);
   static const routeName = "home";
@@ -19,13 +23,13 @@ class CustomBottomBar extends StatefulWidget {
 }
 
 class _CustomBottomBarState extends State<CustomBottomBar> {
-
+  late AppConfigProvider provider;
   var mainColor = Colors.white, activeColor = Colors.black;
   var currentIndex = 0;
 
   changeColor(index, currentIndex){
     if(index == currentIndex){
-      return activeColor;
+      return provider.isDarkTheme()? Color.fromRGBO(252,196,64,1):activeColor;
     }else{
       return mainColor;
     }
@@ -33,9 +37,8 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
 
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
     return BottomAppBar(
-      //color: Color(0x46352b),
-        color:  Color.fromRGBO(183, 147, 95, 1),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Row(

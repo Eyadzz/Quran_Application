@@ -1,16 +1,28 @@
-# quran_application
+# Islami Application
 
-A new Flutter project.
+A nice application to read quran and ahadeth whenever you want
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is made with Flutter.
 
-A few resources to get you started if this is your first Flutter project:
+The application contains the following:
+  1- Quran
+  2- Sebha
+  3- Radio
+  4- Ahadeth
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Screenshots
+![Screenshot_1629045550](https://user-images.githubusercontent.com/66397595/129494011-7e7c203b-ad9e-455b-b361-286c98539560.png)
+![Screenshot_1629045555](https://user-images.githubusercontent.com/66397595/129494012-5d6bdf1b-76a7-4bba-b600-694808f55117.png)
+![Screenshot_1629045560](https://user-images.githubusercontent.com/66397595/129494013-bf4b0f68-ce2a-42d6-b9ec-f406e409cce7.png)
+![Screenshot_1629045562](https://user-images.githubusercontent.com/66397595/129494015-1fe58907-b817-41fa-a9a7-d09853f1baee.png)
+![Screenshot_1629045565](https://user-images.githubusercontent.com/66397595/129494016-441dc135-0638-4e55-8ce8-269b6039339e.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## :dart: ​Clone the project
+
+> `$ git clone https://github.com/Eyadzz/Quran_Application`
+
+## :busts_in_silhouette:  Contributers
+
+> [Eyad Youssef](https://github.com/Eyadzz), [Abdelrahman Ali](https://github.com/abdelrahmanali6), [Abdelrahman Ammar](https://github.com/Abdelrhman-ammar), [Khaled Samir](https://github.com/khaledsamirr) and [Omar Muhammed](https://github.com/OmarMohamed256)

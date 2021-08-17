@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'AppConfigProvider.dart';
 
 class TasbeehCounterDisplay extends StatefulWidget {
   TasbeehCounterDisplay({Key? key, required this.imageToRotate})
@@ -12,6 +14,7 @@ class TasbeehCounterDisplay extends StatefulWidget {
 }
 
 class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
+  late AppConfigProvider provider;
   int _tasbeehCounter = 0;
   String tasbeehButtonLabel = 'سبحان الله';
   late Image imageToRotate;
@@ -52,12 +55,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
 
   @override
   Widget build(BuildContext context) {
-    var textContentStyle = TextStyle(
-      fontSize: 25,
-      color: Colors.black,
-      fontFamily: "Sultann",
-
-    );
+    provider = Provider.of<AppConfigProvider>(context);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -81,41 +79,34 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
         SizedBox(
           height: 10,
         ),
-        Text(AppLocalizations.of(context)!.numOfTasbeehat,style: textContentStyle),
+        Text(AppLocalizations.of(context)!.numOfTasbeehat,style: Theme.of(context).textTheme.headline1,),
         SizedBox(
           height: 20,
         ),
 
-        Container(
-          width: 60,
-          height: 80,
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(183, 147, 95, 1).withAlpha(100),
-            borderRadius: BorderRadius.circular(25),
-          ),
-          child: Text(
-            '$_tasbeehCounter',
-            textScaleFactor: 1.6,
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.black.withOpacity(0.6),height: 2.5),
-          ),
-        ),
+        ElevatedButton(
+            onPressed: null,
+            child: Text(
+              '$_tasbeehCounter',
+              textScaleFactor: 1.6,
+              style: TextStyle(color: provider.isDarkTheme()? Colors.white: Colors.black.withOpacity(0.6), fontWeight: FontWeight.bold),
+            ),
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                    provider.isDarkTheme()?Color.fromRGBO(20, 26,46, 1) : Color.fromRGBO(183, 147, 95, 1).withAlpha(100)),
+                minimumSize: MaterialStateProperty.all(Size(60,80)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    )))),
         SizedBox(
           height: 10,
         ),
 
-        Container(
-          width: 150,
-          height: 40,
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(183, 147, 95, 1),
-            borderRadius: BorderRadius.circular(25),
-          ),
-          child: Text(tasbeehButtonLabel,
-              textScaleFactor: 1.6,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white.withOpacity(1))),
-        ),
+        ElevatedButton(
+            onPressed: null,
+            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: provider.isDarkTheme()? Colors.black: Colors.white.withOpacity(1),fontFamily: "Sultann",)),
+            )
       ],
     );
   }
