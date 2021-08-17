@@ -1,13 +1,11 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:quran_application/ReadQuran.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'package:provider/provider.dart';
 import 'AppConfigProvider.dart';
+
 class QuranScreen extends StatefulWidget {
 
   static const routeName = "quran";
@@ -61,8 +59,9 @@ class _QuranScreenState extends State<QuranScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          header(AppLocalizations.of(context)!.numOfVerses,  BoxDecoration(border: Border(bottom: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),top: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,)))),
                           header(AppLocalizations.of(context)!.surahName, BoxDecoration(border: Border(left: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),bottom: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),top: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,)))),
+                          header(AppLocalizations.of(context)!.numOfVerses,  BoxDecoration(border: Border(bottom: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),top: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,)))),
+
                         ],
                       ),
                       Expanded(
@@ -103,14 +102,6 @@ class _QuranScreenState extends State<QuranScreen> {
     return Row(
       children: [
         Expanded(
-          child: Center(
-            child:  Text(
-              number,
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-          ),
-        ),
-        Expanded(
           child: Container(
             decoration: BoxDecoration(border: Border(left: BorderSide(color: provider.isDarkTheme()? colorDarkTheme: colorTheme,width: 3,))),
             child: TextButton(
@@ -124,6 +115,14 @@ class _QuranScreenState extends State<QuranScreen> {
                 name,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Center(
+            child:  Text(
+              number,
+              style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
         ),

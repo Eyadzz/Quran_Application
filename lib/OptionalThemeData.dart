@@ -12,6 +12,7 @@ class OptionalThemeData {
           bodyText1: TextStyle(
             color:Colors.black,
             fontSize: 25,
+            fontWeight: FontWeight.normal,
             fontFamily: "Sultann",
           ),
         headline1: TextStyle(
@@ -25,7 +26,7 @@ class OptionalThemeData {
             fontFamily: "ElMessiri",
           ),
         bodyText2: TextStyle(fontSize: 20,color:Colors.black,fontFamily: "DecoType", height: 2),
-        headline3: TextStyle(color: Colors.white.withOpacity(1),fontFamily: "Sultann", fontSize: 20),
+        headline3: TextStyle(color: Colors.white.withOpacity(1),fontFamily: "Sultann", fontSize: 20,fontWeight: FontWeight.normal,),
       ),
       bottomAppBarTheme: BottomAppBarTheme(
       color: lightThemeColor,
@@ -51,6 +52,7 @@ class OptionalThemeData {
         color:Colors.white ,
         fontSize: 25,
         fontFamily: "Sultann",
+        fontWeight: FontWeight.normal,
       ),
       headline1: TextStyle(
         color: Colors.white,
@@ -63,7 +65,7 @@ class OptionalThemeData {
           fontFamily: "ElMessiri",
         ),
         bodyText2: TextStyle(fontSize: 20,color:darkThemeColor,fontFamily: "DecoType", height: 2),
-          headline3: TextStyle(color: Colors.black,fontFamily: "Sultann"),
+          headline3: TextStyle(color: Colors.black,fontFamily: "Sultann",fontWeight: FontWeight.normal,),
 
   ),
     bottomAppBarTheme: BottomAppBarTheme(
