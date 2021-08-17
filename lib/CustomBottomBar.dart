@@ -27,9 +27,9 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
 
   changeColor(index, currentIndex){
     if(index == currentIndex){
-      return provider.isDarkTheme()? Colors.white:activeColor;
+      return provider.isDarkTheme()? Color.fromRGBO(252,196,64,1):activeColor;
     }else{
-      return provider.isDarkTheme()? Color.fromRGBO(252,196,64,1):mainColor;
+      return mainColor;
     }
   }
 
@@ -37,8 +37,6 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
   Widget build(BuildContext context) {
     provider = Provider.of<AppConfigProvider>(context);
     return BottomAppBar(
-      //color: Color(0x46352b),
-        color: provider.isDarkTheme()? Color.fromRGBO(20,26,46,1):Color.fromRGBO(183, 147, 95, 1),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Row(

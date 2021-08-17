@@ -79,11 +79,11 @@ class _ReadQuranState extends State<ReadQuran> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:<Widget>[
                   SizedBox(height:120),
-                  Text(Name, style: TextStyle(color: provider.isDarkTheme()? colorDarkTheme:Colors.black ,fontSize: 25,fontWeight: FontWeight.bold)),
+                  Text(Name, style: Theme.of(context).textTheme.headline2),
                   Container(
                     height: 1,
                     width: 270,
-                    color: Color.fromRGBO(183, 147, 95, 1),
+                    color: provider.isDarkTheme()? colorDarkTheme: Color.fromRGBO(183, 147, 95, 1),
                   ),
                   new Expanded(
                       flex: 1,
@@ -99,7 +99,7 @@ class _ReadQuranState extends State<ReadQuran> {
                                         AsyncSnapshot<String>lines) {
                                       if(lines.data!=null){
                                         return new Directionality(textDirection: TextDirection.rtl, child:
-                                        Text(lines.data! ,style: TextStyle(fontSize: 20,color: provider.isDarkTheme()? colorDarkTheme:Colors.black,fontFamily: "DecoType",))
+                                        Text(lines.data! ,style: Theme.of(context).textTheme.bodyText2)
                                         );
                                       }
                                       else{

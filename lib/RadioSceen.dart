@@ -25,10 +25,7 @@ class RadioScreen extends StatelessWidget {
             Image.asset("assets/images/radio.png"),
             SizedBox(height: 50),
             Text("إذاعة القرآن الكريم",
-              style: TextStyle(
-                fontSize: 25,
-                fontFamily: "ElMessiri",
-              ),
+              style: Theme.of(context).textTheme.headline2
             ),
             SizedBox(height: 60,),
             Row(

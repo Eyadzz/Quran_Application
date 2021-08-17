@@ -18,18 +18,6 @@ class _QuranScreenState extends State<QuranScreen> {
   var surasNums=[];
   var colorTheme = Color.fromRGBO(183, 147, 95, 1);
   var colorDarkTheme = Color.fromRGBO(252,196,64,1);
-  var textContentStyle = TextStyle(
-    fontSize: 25,
-    color: Colors.black,
-    fontFamily: "Sultann",
-
-  );
-  var textContentStyleDarkTheme = TextStyle(
-    fontSize: 25,
-    color: Colors.white,
-    fontFamily: "Sultann",
-
-  );
 
   @override
   void  initState(){
@@ -112,10 +100,10 @@ class _QuranScreenState extends State<QuranScreen> {
       children: [
         Expanded(
           child: Center(
-            child: provider.isDarkTheme()? Text(
+            child:  Text(
               number,
-              style: textContentStyleDarkTheme,
-            ): Text (number,style: textContentStyle),
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
           ),
         ),
         Expanded(
@@ -128,10 +116,10 @@ class _QuranScreenState extends State<QuranScreen> {
               style: TextButton.styleFrom(
                 padding: EdgeInsets.zero,
               ),
-              child: provider.isDarkTheme()? Text(
+              child: Text(
                 name,
-                style: textContentStyleDarkTheme,
-              ): Text (name,style: textContentStyle),
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
             ),
           ),
         ),
@@ -146,11 +134,7 @@ class _QuranScreenState extends State<QuranScreen> {
         decoration: containerBorders,
         child: Center(
           child: Text(text,
-            style: TextStyle(
-              fontSize: 25,
-              fontFamily: "ElMessiri",
-              color: provider.isDarkTheme()? Colors.white:Colors.black,
-            ),
+            style: Theme.of(context).textTheme.headline1
           ),
         ),
       ),

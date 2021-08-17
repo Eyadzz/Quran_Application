@@ -18,18 +18,6 @@ class _HadethState extends State<HadethScreen> {
   var hadethName=[];
   var colorTheme = Color.fromRGBO(183, 147, 95, 1);
   var colorDarkTheme = Color.fromRGBO(252,196,64,1);
-  var textContentStyle = TextStyle(
-    fontSize: 25,
-    color: Colors.black,
-    fontFamily: "Sultann",
-
-  );
-  var textContentStyleDarkTheme = TextStyle(
-    fontSize: 25,
-    color: Colors.white,
-    fontFamily: "Sultann",
-
-  );
 
   @override
   void  initState(){
@@ -116,10 +104,10 @@ class _HadethState extends State<HadethScreen> {
               style: TextButton.styleFrom(
                 padding: EdgeInsets.all(8.0),
               ),
-              child: provider.isDarkTheme()? Text(
+              child:  Text(
                 name,
-                style: textContentStyleDarkTheme,
-              ): Text (name,style: textContentStyle),
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
             ),
           ),
         ),
@@ -134,11 +122,7 @@ class _HadethState extends State<HadethScreen> {
         decoration: containerBorders,
         child: Center(
           child: Text(text,
-            style: TextStyle(
-              fontSize: 25,
-              fontFamily: "ElMessiri",
-              color: provider.isDarkTheme()? Colors.white:Colors.black,
-            ),
+            style: Theme.of(context).textTheme.headline1
           ),
         ),
       ),

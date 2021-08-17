@@ -54,6 +54,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
   @override
   Widget build(BuildContext context) {
     provider = Provider.of<AppConfigProvider>(context);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
@@ -76,8 +77,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
         SizedBox(
           height: 10,
         ),
-
-        Text('عدد التسبيحات',style: TextStyle(color: provider.isDarkTheme()?Colors.white: Colors.black, fontFamily: "ElMessiri", ), textScaleFactor: 2,),
+        Text('عدد التسبيحات',style: Theme.of(context).textTheme.headline1,),
         SizedBox(
           height: 20,
         ),
@@ -104,13 +104,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
         ElevatedButton(
             onPressed: null,
             child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: provider.isDarkTheme()? Colors.black: Colors.white.withOpacity(1),fontFamily: "Sultann",)),
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(provider.isDarkTheme()? Color.fromRGBO(252,196,64,1):Color.fromRGBO(183, 147, 95, 1)),
-                minimumSize: MaterialStateProperty.all(Size(150,40)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        side: BorderSide(color:Color.fromRGBO(183, 147, 95, 1))))))
+            )
       ],
     );
   }
