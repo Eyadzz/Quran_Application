@@ -77,7 +77,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
           ),
         ),
         SizedBox(
-          height: 10,
+          height: 25,
         ),
         Text(AppLocalizations.of(context)!.numOfTasbeehat,style: Theme.of(context).textTheme.headline1,),
         SizedBox(
@@ -89,7 +89,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
             child: Text(
               '$_tasbeehCounter',
               textScaleFactor: 1.6,
-              style: TextStyle(color: provider.isDarkTheme()? Colors.white: Colors.black.withOpacity(0.6), fontWeight: FontWeight.bold),
+              style: TextStyle(color: provider.isDarkTheme()? Colors.white: Colors.black, fontWeight: FontWeight.bold),
             ),
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
@@ -100,12 +100,12 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
                       borderRadius: BorderRadius.circular(25.0),
                     )))),
         SizedBox(
-          height: 10,
+          height: 20,
         ),
 
         ElevatedButton(
             onPressed: null,
-            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: provider.isDarkTheme()? Colors.black: Colors.white.withOpacity(1),fontFamily: "Sultann",)),
+            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: provider.isDarkTheme()? Colors.black: Colors.white.withOpacity(1),fontFamily: "Sultann", fontWeight: FontWeight.normal)),
             )
       ],
     );

@@ -17,7 +17,7 @@ class _SplashState extends State<Splash> {
     return new SplashScreen(
         seconds: 2,
         navigateAfterSeconds: new Home(),
-        image: new Image.asset("assets/images/logo.png"),
+        image: new Image.asset("assets/images/logo2.png"),
         backgroundColor: Colors.white,
         photoSize: 100.0,
         loaderColor: Colors.yellow

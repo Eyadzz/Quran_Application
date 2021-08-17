@@ -93,7 +93,7 @@ class _ReadQuranState extends State<ReadQuran> {
                           child: new SingleChildScrollView(
                               scrollDirection: Axis.vertical,
                               child: Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: const EdgeInsets.all(17.0),
                                 child: new FutureBuilder(
                                     future: ReadData(Num),
                                     builder: (BuildContext context,

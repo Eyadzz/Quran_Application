@@ -18,31 +18,34 @@ class _SideMenuState extends State<SideMenu> {
   Widget build(BuildContext context) {
     provider = Provider.of<AppConfigProvider>(context);
     return  Drawer(
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 90,horizontal: 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            InkWell(
-              onTap: (){
-                changeLanguage();
-              },
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(AppLocalizations.of(context)!.language),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 90,horizontal: 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              InkWell(
+                onTap: (){
+                  changeLanguage();
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  child: Text(AppLocalizations.of(context)!.language),
+                ),
               ),
-            ),
 
-            InkWell(
-              onTap: (){
-                changeTheme();
-              },
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(AppLocalizations.of(context)!.theme),
+              InkWell(
+                onTap: (){
+                  changeTheme();
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  child: Text(AppLocalizations.of(context)!.theme),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -81,34 +84,34 @@ class _SideMenuState extends State<SideMenu> {
   }
 
   void changeTheme() {
+    Navigator.pop(context);
     showModalBottomSheet(context: context, useRootNavigator: true,builder: (buildContext) {
       return Container(
-        child: Column(
-          children: [
-            InkWell(
-              onTap: (){
-                provider.setDarkTheme();
-              },
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: [
+              InkWell(
+                onTap: (){
+                  provider.setDarkTheme();
+                },
 
-              child: Container(
-                  padding:EdgeInsets.symmetric(vertical:12),
-                  child: provider.isDarkTheme()?
-                  Text('Dark',textAlign: TextAlign.center, style: TextStyle(color: Colors.black),):
-                  Text('Dark',textAlign: TextAlign.center, style: TextStyle(color: Colors.white))
+                child: Container(
+                    padding:EdgeInsets.symmetric(vertical:12),
+                    child: Text('Dark',textAlign: TextAlign.center, style: TextStyle(color: Colors.black))
+                ),
               ),
-            ),
-            InkWell(
-              onTap: (){
-                provider.setTheme();
-              },
-              child: Container(
-                  padding:EdgeInsets.symmetric(vertical:12),
-                  child: provider.isDarkTheme()?
-                  Text('Light',textAlign: TextAlign.center, style: TextStyle(color: Colors.white),):
-                  Text('Light',textAlign: TextAlign.center, style: TextStyle(color: Colors.black))
-              ),
-            )
-          ],
+              InkWell(
+                onTap: (){
+                  provider.setTheme();
+                },
+                child: Container(
+                    padding:EdgeInsets.symmetric(vertical:12),
+                    child: Text('Light',textAlign: TextAlign.center, style: TextStyle(color: Colors.black))
+                ),
+              )
+            ],
+          ),
         ),
       );
     });

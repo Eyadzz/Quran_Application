@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'AppConfigProvider.dart';
 import 'Home.dart';
 
 
@@ -9,6 +11,7 @@ class SplashCustom extends StatefulWidget {
 }
 
 class _SplashCustomState extends State<SplashCustom> {
+  late AppConfigProvider provider;
 
   @override
   void initState(){
@@ -22,10 +25,11 @@ class _SplashCustomState extends State<SplashCustom> {
 
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/bg3.png"),
+          image: provider.isDarkTheme()? AssetImage("assets/images/splashbgdark.png"):AssetImage("assets/images/bg3.png"),
           fit: BoxFit.cover
         )
       ),
@@ -33,9 +37,9 @@ class _SplashCustomState extends State<SplashCustom> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(child: Container()),
-          Image.asset("assets/images/logo.png"),
+          provider.isDarkTheme()? Image.asset("assets/images/logo.png"):Image.asset("assets/images/logo2.png"),
           Expanded(child: Container()),
-          Image.asset("assets/images/Group 7.png")
+          provider.isDarkTheme()? Image.asset("assets/images/route yellow.png"):Image.asset("assets/images/Group 7.png"),
         ],
       )
     );

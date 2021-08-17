@@ -3,14 +3,13 @@ import 'package:quran_application/QuranScreen.dart';
 import 'package:quran_application/RadioSceen.dart';
 import 'package:quran_application/TasbeehScreen.dart';
 import 'Home.dart';
-import 'package:quran_application/RadioSceen.dart';
 import 'package:provider/provider.dart';
 import 'AppConfigProvider.dart';
 
 class CustomBottomBar extends StatefulWidget {
   const CustomBottomBar ({Key? key, this.mypage}) : super(key: key);
   static const routeName = "home";
-  final iconSize = 30.0;
+  final iconSize = 70.0;
 
   final quranPageName = QuranScreen.routeName;
   final hasdisPageName = QuranScreen.routeName;
@@ -40,6 +39,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
     provider = Provider.of<AppConfigProvider>(context);
     return BottomAppBar(
         child: Container(
+          height: 50,
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -107,9 +107,14 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               IconButton(
                 onPressed: (){
                   scaffoldKey.currentState!.openDrawer();
+                  setState(() {
+                    currentIndex = 4;
+                  });
                 },
                 icon: ImageIcon(
                   AssetImage("assets/images/settings.png"),
+                  color: changeColor(4, currentIndex),
+                  size: widget.iconSize,
                 ),
               ),
 

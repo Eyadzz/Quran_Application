@@ -32,13 +32,12 @@ class RadioScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(width: 70,),
-                // Image.asset("assets/images/icon_prev.png"),
-                IconButton(icon: Image.asset("assets/images/icon_prev.png"), color: colorTheme, onPressed: () {}),
+                SizedBox(width: 50,),
+                IconButton(icon: Image.asset("assets/images/icon_next.png"), color: colorTheme, onPressed: () {}),
                 SizedBox(width: 50,),
                 IconButton(icon: Image.asset("assets/images/icon_play.png"), color: colorTheme, onPressed: () {}),
                 SizedBox(width: 50,),
-                IconButton(icon: Image.asset("assets/images/icon_next.png"), color: colorTheme, onPressed: () {}),
+                IconButton(icon: Image.asset("assets/images/icon_prev.png"), color: colorTheme, onPressed: () {}),
                 SizedBox(width: 50,),
               ],
             ),
