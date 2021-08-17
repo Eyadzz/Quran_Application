@@ -13,9 +13,6 @@ The application contains the following:
   4- Ahadeth
 
 ## Screenshots
-![Screenshot_1629157435](https://user-images.githubusercontent.com/66397595/129781389-9bc6b9c8-7e71-418b-8b0f-6364b8b9d614.png)
-![Screenshot_1629157443](https://user-images.githubusercontent.com/66397595/129781396-a1f14602-b6b3-4366-aa1d-eaaa5c5607e6.png)
-![Screenshot_1629157458](https://user-images.githubusercontent.com/66397595/129781402-9f8f35d9-b1b6-4101-9f41-0d56fb321ea4.png)
 ![Screenshot_1629225084](https://user-images.githubusercontent.com/66397595/129781406-80b60d24-646e-4413-b867-d87cf94bc289.png)
 ![Screenshot_1629225089](https://user-images.githubusercontent.com/66397595/129781409-2692a264-b57e-4e7e-a464-29576449afce.png)
 ![Screenshot_1629225097](https://user-images.githubusercontent.com/66397595/129781413-fd3c6db2-facb-4cac-901c-36eba3937b77.png)
