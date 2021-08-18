@@ -95,7 +95,11 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                   setState(() {
                     currentIndex = 3;
                   });
-                },
+                },/*
+                icon: Icon(
+                  Icons.settings,
+                  color: changeColor(4, currentIndex),
+                ),*/
                 icon: ImageIcon(
                   AssetImage("assets/images/Group 6.png"),
                   //color: widget.iconColor,
@@ -103,7 +107,6 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                   size: widget.iconSize,
                 ),
               ),
-
               IconButton(
                 onPressed: (){
                   scaffoldKey.currentState!.openDrawer();
@@ -111,13 +114,17 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                     currentIndex = 4;
                   });
                 },
+                icon: Icon(
+                  Icons.settings,
+                  color: changeColor(4, currentIndex),
+                ),
+                /*
                 icon: ImageIcon(
                   AssetImage("assets/images/settings.png"),
                   color: changeColor(4, currentIndex),
                   size: widget.iconSize,
-                ),
+                ),*/
               ),
-
             ],
           ),
         )

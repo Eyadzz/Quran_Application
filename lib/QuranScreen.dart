@@ -10,6 +10,7 @@ class QuranScreen extends StatefulWidget {
 
   static const routeName = "quran";
 
+
   @override
   _QuranScreenState createState() => _QuranScreenState();
 }
@@ -20,7 +21,6 @@ class _QuranScreenState extends State<QuranScreen> {
   var surasNums=[];
   var colorTheme = Color.fromRGBO(183, 147, 95, 1);
   var colorDarkTheme = Color.fromRGBO(252,196,64,1);
-
   @override
   void  initState(){
     getContent();
@@ -30,6 +30,10 @@ class _QuranScreenState extends State<QuranScreen> {
   @override
   Widget build(BuildContext context) {
     provider = Provider.of<AppConfigProvider>(context);
+    var arborder = BoxDecoration(border: Border(left: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),bottom: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),top: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,)));
+    var enborder = BoxDecoration(border: Border(right: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),bottom: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),top: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,)));
+    var currentBorder = (provider.currentLocale == 'en')? enborder: arborder;
+
     return Scaffold(
         body: Stack(
           alignment: AlignmentDirectional.center,
@@ -59,7 +63,7 @@ class _QuranScreenState extends State<QuranScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          header(AppLocalizations.of(context)!.surahName, BoxDecoration(border: Border(left: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),bottom: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),top: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,)))),
+                          header(AppLocalizations.of(context)!.surahName, currentBorder),
                           header(AppLocalizations.of(context)!.numOfVerses,  BoxDecoration(border: Border(bottom: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),top: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,)))),
 
                         ],
@@ -99,11 +103,14 @@ class _QuranScreenState extends State<QuranScreen> {
 
   Widget buildContent(String name, String number, int index)
   {
+    var contentArBorder = BoxDecoration(border: Border(left: BorderSide(color: provider.isDarkTheme()? colorDarkTheme: colorTheme,width: 3,)));
+    var contentEnBorder = BoxDecoration(border: Border(right: BorderSide(color: provider.isDarkTheme()? colorDarkTheme: colorTheme,width: 3,)));
+    var contentCurrentBorder = (provider.currentLocale == 'en')? contentEnBorder: contentArBorder;
     return Row(
       children: [
         Expanded(
           child: Container(
-            decoration: BoxDecoration(border: Border(left: BorderSide(color: provider.isDarkTheme()? colorDarkTheme: colorTheme,width: 3,))),
+            decoration: contentCurrentBorder,
             child: TextButton(
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(displayContent(name,index,true))));

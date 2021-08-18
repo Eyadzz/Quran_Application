@@ -28,6 +28,7 @@ class _HomeState extends State<Home> {
       drawer: SideMenu(),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        leading: new Container(),
         title: Text(AppLocalizations.of(context)!.title, style: TextStyle(
           color: provider.isDarkTheme()?Colors.white:Colors.black,
           fontSize: 30,
@@ -45,8 +46,8 @@ class _HomeState extends State<Home> {
         children: [
           QuranScreen(),
           RadioScreen(),
-            TasbeehScreen(),
-            HadethScreen(),
+          TasbeehScreen(),
+          HadethScreen(),
         ],
       ),
       bottomNavigationBar: CustomBottomBar(mypage: _myPage),

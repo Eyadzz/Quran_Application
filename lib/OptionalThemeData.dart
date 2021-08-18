@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class OptionalThemeData {
-
   static final darkThemeColor = Color.fromRGBO(252,196,64,1);
   static final lightThemeColor = Color.fromRGBO(183, 147, 95, 1);
   static final lightTheme =ThemeData(
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: Colors.white,
+        modalBackgroundColor: Colors.white
+      ),
       appBarTheme: AppBarTheme(
           titleTextStyle: TextStyle(color: Colors.black)
       ),
@@ -44,6 +47,10 @@ class OptionalThemeData {
 
 
   static final darkTheme =ThemeData(
+      bottomSheetTheme: BottomSheetThemeData(
+          backgroundColor: Color.fromRGBO(20, 26, 46, 1),
+          modalBackgroundColor: Color.fromRGBO(20, 26, 46, 1)
+      ),
       appBarTheme: AppBarTheme(
           titleTextStyle: TextStyle(color: Colors.white)
       ),

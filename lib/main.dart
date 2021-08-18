@@ -11,8 +11,9 @@ import 'SplashCustom.dart';
 import 'Home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  AppConfigProvider obj = await AppConfigProvider();
   runApp(MyApp());
 }
 
@@ -22,8 +23,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(create: (buildContext) => AppConfigProvider(),
       builder: (buildContext,widget){
-      final provider=Provider.of<AppConfigProvider>(buildContext);
-        return MaterialApp(themeMode: provider.themeMode,
+      final provider = Provider.of<AppConfigProvider>(buildContext);
+        return MaterialApp(
+          themeMode: provider.themeMode,
           darkTheme: OptionalThemeData.darkTheme,
           theme: OptionalThemeData.lightTheme,
           localizationsDelegates:[
@@ -45,10 +47,8 @@ class MyApp extends StatelessWidget {
             HadethScreen.routeName:(context)=>HadethScreen(),
             RadioScreen.routeName:(context)=>RadioScreen(),
           },
-
         );
       },
     );
-
   }
 }
