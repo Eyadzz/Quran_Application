@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'AppConfigProvider.dart';
 
 class ReadQuran extends StatefulWidget {
+  static const String routeName="ReadQuran";
   String Name="";
   int Num=0;
   bool isSurah=true;
@@ -18,7 +19,6 @@ class ReadQuran extends StatefulWidget {
   _ReadQuranState createState() => _ReadQuranState();
 }
 
-const String routeName="ReadQuran";
 
 class _ReadQuranState extends State<ReadQuran> {
 
