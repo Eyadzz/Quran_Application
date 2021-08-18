@@ -113,7 +113,7 @@ class _QuranScreenState extends State<QuranScreen> {
             decoration: contentCurrentBorder,
             child: TextButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(displayContent(name,index,true))));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(name,index,true)));
               },
               style: TextButton.styleFrom(
                 padding: EdgeInsets.zero,

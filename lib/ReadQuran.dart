@@ -5,41 +5,41 @@ import 'package:provider/provider.dart';
 import 'AppConfigProvider.dart';
 
 class ReadQuran extends StatefulWidget {
-  const ReadQuran(setSurah, {key}) : super(key: key);
-
+  String Name="";
+  int Num=0;
+  bool isSurah=true;
+  int AyahNum=0;
+  ReadQuran(String name,int num, bool is_Surah){
+    Name=name;
+    Num=num;
+    isSurah = is_Surah;
+  }
   @override
   _ReadQuranState createState() => _ReadQuranState();
 }
+
 const String routeName="ReadQuran";
-String Name="";
-int Num=0;
-bool isSurah=true;
-
-displayContent(String name,int num, bool is_Surah){
-  Name=name;
-  Num=num;
-  isSurah = is_Surah;
-}
-int AyahNum=0;
-
-String ConcreteSurahDisplay(String data){
-
-  if(isSurah) {
-    List<String> Surah = data.split('\n');
-    String surahText = '';
-    AyahNum = 1;
-    for (var line in Surah) {
-      surahText += line;
-      surahText += " (" + AyahNum.toString() + ") ";
-      AyahNum++;
-    }
-    return surahText;
-  }
-  else
-   return data;
-}
 
 class _ReadQuranState extends State<ReadQuran> {
+
+
+
+  String ConcreteSurahDisplay(String data){
+    if(widget.isSurah) {
+      List<String> Surah = data.split('\n');
+      String surahText = '';
+      widget.AyahNum = 1;
+      for (var line in Surah) {
+        surahText += line;
+        surahText += " (" + widget.AyahNum.toString() + ") ";
+        widget.AyahNum++;
+      }
+      return surahText;
+    }
+    else
+      return data;
+  }
+
   late AppConfigProvider provider;
   var colorDarkTheme = Color.fromRGBO(252,196,64,1);
   @override
@@ -79,7 +79,7 @@ class _ReadQuranState extends State<ReadQuran> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:<Widget>[
                   SizedBox(height:120),
-                  Text(Name, style: Theme.of(context).textTheme.headline2),
+                  Text(widget.Name, style: Theme.of(context).textTheme.headline2),
                   Container(
                     height: 1,
                     width: 270,
@@ -94,7 +94,7 @@ class _ReadQuranState extends State<ReadQuran> {
                               child: Padding(
                                 padding: const EdgeInsets.all(17.0),
                                 child: new FutureBuilder(
-                                    future: ReadData(Num),
+                                    future: ReadData(widget.Num),
                                     builder: (BuildContext context,
                                         AsyncSnapshot<String>lines) {
                                       if(lines.data!=null){
