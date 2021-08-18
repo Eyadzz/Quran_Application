@@ -101,7 +101,7 @@ class _SideMenuState extends State<SideMenu> {
             children: [
               InkWell(
                 onTap: () async{
-                  provider.setDarkTheme();
+                  provider.changeToDarkTheme();
                   await _prefs.setBool("lightTheme", false);
                   //Navigator.of(context).pop();
                 },
@@ -113,7 +113,7 @@ class _SideMenuState extends State<SideMenu> {
               ),
               InkWell(
                 onTap: () async{
-                  provider.setTheme();
+                  provider.changeToLightTheme();
                   await _prefs.setBool("lightTheme", true);
                   //Navigator.of(context).pop();
                 },

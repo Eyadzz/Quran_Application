@@ -41,6 +41,7 @@ class RadioScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(width: 50,),
                 Expanded(
                   child: Transform(
                       transform: Matrix4.rotationY(!isRTL ? math.pi : 0),
@@ -69,6 +70,7 @@ class RadioScreen extends StatelessWidget {
                           ),
                   ),
                 ),
+                SizedBox(width: 50,),
               ],
             ),
           ],

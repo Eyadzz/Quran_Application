@@ -10,10 +10,11 @@ import 'OptionalThemeData.dart';
 import 'SplashCustom.dart';
 import 'Home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'Preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  AppConfigProvider obj = await AppConfigProvider();
+  await Preferences.init();
   runApp(MyApp());
 }
 
@@ -23,7 +24,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(create: (buildContext) => AppConfigProvider(),
       builder: (buildContext,widget){
+
       final provider = Provider.of<AppConfigProvider>(buildContext);
+      provider.themeMode = Preferences.getThemePreference();
+
         return MaterialApp(
           themeMode: provider.themeMode,
           darkTheme: OptionalThemeData.darkTheme,
@@ -35,7 +39,7 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: AppLocalizations.supportedLocales,
-         locale: Locale.fromSubtags(languageCode: provider.currentLocale),
+          locale: Locale.fromSubtags(languageCode: Preferences.getLanguage()),
           title: "Quran",
           debugShowCheckedModeBanner: false,
           home: SplashCustom(),
