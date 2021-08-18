@@ -10,5 +10,6 @@
   "numOfVerses":"عدد الآيات",
   "numOfTasbeehat":"عدد التسبيحات",
   "radio":"إذاعة القرآن الكريم",
-  "hadith":"الأحاديث"
+  "hadith":"الأحاديث",
+  "nothingtoshow":"لا يوجد شئ للعرض"
 }

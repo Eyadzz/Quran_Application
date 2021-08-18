@@ -10,5 +10,6 @@
      "numOfVerses":"Verses Number",
      "numOfTasbeehat":"Tasbeehat Number",
      "radio":"Quran Radio",
-     "hadith":"Hadith"
+     "hadith":"Hadith",
+    "nothingtoshow":"Nothing to show!"
 }
