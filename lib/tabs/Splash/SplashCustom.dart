@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'AppConfigProvider.dart';
-import 'Home.dart';
+import '../../utility/AppConfigProvider.dart';
+import '../../Home.dart';
 
 
 class SplashCustom extends StatefulWidget {

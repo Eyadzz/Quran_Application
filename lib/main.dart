@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:quran_application/AppConfigProvider.dart';
-import 'package:quran_application/QuranScreen.dart';
-import 'package:quran_application/RadioSceen.dart';
-import 'package:quran_application/TasbeehScreen.dart';
-import 'package:quran_application/HadethScreen.dart';
-import 'OptionalThemeData.dart';
-import 'SplashCustom.dart';
+import 'package:quran_application/utility/AppConfigProvider.dart';
+import 'package:quran_application/tabs/Quran/QuranScreen.dart';
+import 'package:quran_application/tabs/Radio/RadioSceen.dart';
+import 'package:quran_application/tabs/Tasbeeh/TasbeehScreen.dart';
+import 'package:quran_application/tabs/Hadeth/HadethScreen.dart';
+import 'utility/ThemeData.dart';
+import 'package:quran_application/tabs/Splash/SplashCustom.dart';
 import 'Home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'Preferences.dart';
+import 'utility/Preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

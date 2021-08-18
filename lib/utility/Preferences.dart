@@ -15,12 +15,12 @@ class Preferences{
   static String getLanguage() => _preferences.getString(_language).toString();
 
   static Future saveThemePreference(ThemeMode _themeMode) async {
-    String name;
+    String themeMode;
     if(_themeMode == ThemeMode.light)
-      name='light';
+      themeMode='light';
     else
-      name = 'dark';
-    _preferences.setString(_theme, name);
+      themeMode = 'dark';
+    _preferences.setString(_theme, themeMode);
   }
 
   static ThemeMode getThemePreference(){

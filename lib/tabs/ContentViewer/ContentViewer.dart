@@ -1,45 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'AppConfigProvider.dart';
+import 'package:quran_application/utility/FileOperations.dart';
+import '../../utility/AppConfigProvider.dart';
 
-class ReadQuran extends StatefulWidget {
-  static const String routeName="ReadQuran";
-  String Name="";
-  int Num=0;
+class ContentViewer extends StatefulWidget {
+  static const String routeName="ContentViewer";
+  String title="";
+  int fileNumber=0;
   bool isSurah=true;
-  int AyahNum=0;
-  ReadQuran(String name,int num, bool is_Surah){
-    Name=name;
-    Num=num;
-    isSurah = is_Surah;
-  }
+  int ayahNum=0;
+
+  ContentViewer(this.title,this.fileNumber,this.isSurah);
+
   @override
-  _ReadQuranState createState() => _ReadQuranState();
+  _ContentViewerState createState() => _ContentViewerState();
 }
 
 
-class _ReadQuranState extends State<ReadQuran> {
-
-
-
-  String ConcreteSurahDisplay(String data){
-    if(widget.isSurah) {
-      List<String> Surah = data.split('\n');
-      String surahText = '';
-      widget.AyahNum = 1;
-      for (var line in Surah) {
-        surahText += line;
-        surahText += " (" + widget.AyahNum.toString() + ") ";
-        widget.AyahNum++;
-      }
-      return surahText;
-    }
-    else
-      return data;
-  }
-
+class _ContentViewerState extends State<ContentViewer> {
   late AppConfigProvider provider;
   var colorDarkTheme = Color.fromRGBO(252,196,64,1);
   @override
@@ -79,7 +58,7 @@ class _ReadQuranState extends State<ReadQuran> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:<Widget>[
                   SizedBox(height:120),
-                  Text(widget.Name, style: Theme.of(context).textTheme.headline2),
+                  Text(widget.title, style: Theme.of(context).textTheme.headline2),
                   Container(
                     height: 1,
                     width: 270,
@@ -94,7 +73,7 @@ class _ReadQuranState extends State<ReadQuran> {
                               child: Padding(
                                 padding: const EdgeInsets.all(17.0),
                                 child: new FutureBuilder(
-                                    future: ReadData(widget.Num),
+                                    future: getContent(widget.fileNumber),
                                     builder: (BuildContext context,
                                         AsyncSnapshot<String>lines) {
                                       if(lines.data!=null){
@@ -104,7 +83,8 @@ class _ReadQuranState extends State<ReadQuran> {
                                       }
                                       else{
                                         return new Text(AppLocalizations.of(context)!.nothingtoshow);
-                                      }}
+                                      }
+                                    }
                                 ),
                               )
                           )
@@ -117,8 +97,25 @@ class _ReadQuranState extends State<ReadQuran> {
     );
   }
 
-  Future<String> ReadData(int NumOfSurah) async {
-    String data = await rootBundle.loadString('assets/txts/$NumOfSurah.txt');
-    return ConcreteSurahDisplay(data);
+  Future<String> getContent(int NumOfSurah) async {
+    FileOperations fileOperations = new FileOperations();
+    String data = await fileOperations.getDataFromFile('assets/txts/$NumOfSurah.txt');
+    return formatContent(data);
+  }
+
+  String formatContent(String content){
+    if(widget.isSurah) {
+      List<String> Surah = content.split('\n');
+      String surahText = '';
+      widget.ayahNum = 1;
+      for (var line in Surah) {
+        surahText += line;
+        surahText += " (" + widget.ayahNum.toString() + ") ";
+        widget.ayahNum++;
+      }
+      return surahText;
+    }
+    else
+      return content;
   }
 }

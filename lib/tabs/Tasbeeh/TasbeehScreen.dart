@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'TasbeehCounterDisplay.dart';
 import 'package:provider/provider.dart';
-import 'AppConfigProvider.dart';
+import '../../utility/AppConfigProvider.dart';
 
 class TasbeehScreen extends StatelessWidget {
   late AppConfigProvider provider;

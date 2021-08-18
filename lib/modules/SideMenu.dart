@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quran_application/AppConfigProvider.dart';
+import 'package:quran_application/utility/AppConfigProvider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({Key? key}) : super(key: key);
@@ -15,12 +14,15 @@ class SideMenu extends StatefulWidget {
 
 class _SideMenuState extends State<SideMenu> {
   late AppConfigProvider provider;
+  var colorTheme = Colors.white;
+  var colorDarkTheme = Color.fromRGBO(20, 26, 46, 1);
+
   @override
   Widget build(BuildContext context) {
     provider = Provider.of<AppConfigProvider>(context);
     return  Drawer(
       child: Container(
-        color: provider.isDarkTheme()? Color.fromRGBO(20, 26, 46, 1): Colors.white,
+        color: provider.isDarkTheme()? colorDarkTheme: colorTheme,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Container(
@@ -41,7 +43,6 @@ class _SideMenuState extends State<SideMenu> {
                 InkWell(
                   onTap: (){
                     changeTheme();
-
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 12),
@@ -66,7 +67,6 @@ class _SideMenuState extends State<SideMenu> {
             InkWell(
               onTap: (){
                 provider.changeLanguage('en');
-                //Navigator.of(context).pop();
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 12),
@@ -77,7 +77,6 @@ class _SideMenuState extends State<SideMenu> {
             InkWell(
               onTap: (){
                 provider.changeLanguage('ar');
-                //Navigator.of(context).pop();
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 12),
@@ -91,7 +90,6 @@ class _SideMenuState extends State<SideMenu> {
   }
 
   Future<void> changeTheme() async{
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
     Navigator.pop(context);
     showModalBottomSheet(context: context, useRootNavigator: true,builder: (buildContext) {
       return Container(
@@ -100,26 +98,21 @@ class _SideMenuState extends State<SideMenu> {
           child: Column(
             children: [
               InkWell(
-                onTap: () async{
+                onTap: () {
                   provider.changeToDarkTheme();
-                  await _prefs.setBool("lightTheme", false);
-                  //Navigator.of(context).pop();
                 },
-
                 child: Container(
                     padding:EdgeInsets.symmetric(vertical:12),
-                    child: Text('Dark',textAlign: TextAlign.center)
+                    child: Text("Dark",textAlign: TextAlign.center)
                 ),
               ),
               InkWell(
-                onTap: () async{
+                onTap: () {
                   provider.changeToLightTheme();
-                  await _prefs.setBool("lightTheme", true);
-                  //Navigator.of(context).pop();
                 },
                 child: Container(
                     padding:EdgeInsets.symmetric(vertical:12),
-                    child: Text('Light',textAlign: TextAlign.center)
+                    child: Text("Light",textAlign: TextAlign.center)
                 ),
               )
             ],

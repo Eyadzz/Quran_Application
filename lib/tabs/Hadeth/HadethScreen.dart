@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:quran_application/ReadQuran.dart';
+import 'package:quran_application/tabs/ContentViewer/ContentViewer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'AppConfigProvider.dart';
+import 'package:quran_application/utility/FileOperations.dart';
+import '../../utility/AppConfigProvider.dart';
 
 class HadethScreen extends StatefulWidget {
 
@@ -22,7 +22,7 @@ class _HadethState extends State<HadethScreen> {
 
   @override
   void  initState(){
-    getContent();
+    getHadethContent();
     super.initState();
   }
 
@@ -67,7 +67,7 @@ class _HadethState extends State<HadethScreen> {
                           padding: EdgeInsets.only(top: 0.0),
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
-                          itemBuilder: (context, index) => buildContent(hadethName.elementAt(index),index+1),
+                          itemBuilder: (context, index) => hadethListBuilder(hadethName.elementAt(index),index+1),
                           itemCount: hadethName.length,
                         ),
                       ),
@@ -81,18 +81,15 @@ class _HadethState extends State<HadethScreen> {
     );
   }
 
-  Future<String> loadFileData(String path) async {
-    return await rootBundle.loadString(path);
-  }
-
-  getContent()
+  getHadethContent()
   async {
-    String data = await loadFileData('assets/content/hades_names.txt');
+    FileOperations fileOperations= new FileOperations();
+    String data = await fileOperations.getDataFromFile('assets/content/hades_names.txt');
     hadethName=data.split("\n");
     setState(() {});
   }
 
-  Widget buildContent(String name,int index)
+  Widget hadethListBuilder(String name,int index)
   {
     return Row(
       children: [
@@ -100,7 +97,7 @@ class _HadethState extends State<HadethScreen> {
           child: Container(
             child: TextButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(name,(index+1000),false)));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ContentViewer(name,(index+1000),false)));
               },
               style: TextButton.styleFrom(
                 padding: EdgeInsets.all(8.0),

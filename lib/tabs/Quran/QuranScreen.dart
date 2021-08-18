@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:quran_application/ReadQuran.dart';
+import 'package:quran_application/tabs/ContentViewer/ContentViewer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'AppConfigProvider.dart';
-import 'ReadQuran.dart';
+import '../../utility/AppConfigProvider.dart';
+import '../../utility/FileOperations.dart';
+
 import 'dart:math' as math;
 
 
@@ -35,6 +35,7 @@ class _QuranScreenState extends State<QuranScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     provider = Provider.of<AppConfigProvider>(context);
     final TextDirection currentDirection = Directionality.of(context);
     isRTL = currentDirection == TextDirection.rtl;
@@ -77,7 +78,7 @@ class _QuranScreenState extends State<QuranScreen> {
                           padding: EdgeInsets.only(top: 0.0),
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
-                          itemBuilder: (context, index) => buildListOfSurahs(surahsNames.elementAt(index), surahsVerses.elementAt(index), index+1),
+                          itemBuilder: (context, index) => surahListBuilder(surahsNames.elementAt(index), surahsVerses.elementAt(index), index+1),
                           itemCount: surahsNames.length,
                         ),
                       ),
@@ -91,20 +92,17 @@ class _QuranScreenState extends State<QuranScreen> {
     );
   }
 
-  Future<String> loadDataFromFile(String path) async {
-    return await rootBundle.loadString(path);
-  }
-
   getSurahContent()
   async {
-    String data = await loadDataFromFile('assets/content/sura_names.txt');
+    FileOperations FO = new FileOperations();
+    String data = await FO.getDataFromFile('assets/content/sura_names.txt');;
     surahsNames=data.split("\n");
-    data = await loadDataFromFile('assets/content/suras_nums.txt');
+    data = await FO.getDataFromFile('assets/content/suras_nums.txt');
     surahsVerses=data.split("\n");
     setState(() {});
   }
 
-  Widget buildListOfSurahs(String surahName, String surahVerses, int index)
+  Widget surahListBuilder(String surahName, String surahVerses, int index)
   {
     return Row(
       children: [
@@ -117,7 +115,7 @@ class _QuranScreenState extends State<QuranScreen> {
               child: TextButton(
                 onPressed: (){
                   //Navigator.pushNamed(context,ReadQuran.routeName,arguments: ReadQuran(surahName,index,true));
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ReadQuran(surahName,index,true)));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ContentViewer(surahName,index,true)));
                 },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,

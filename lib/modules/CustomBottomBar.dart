@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:quran_application/QuranScreen.dart';
-import 'package:quran_application/RadioSceen.dart';
-import 'package:quran_application/TasbeehScreen.dart';
-import 'Home.dart';
+import 'package:quran_application/tabs/Quran/QuranScreen.dart';
+import 'package:quran_application/tabs/Tasbeeh/TasbeehScreen.dart';
+import '../Home.dart';
 import 'package:provider/provider.dart';
-import 'AppConfigProvider.dart';
-
+import '../utility/AppConfigProvider.dart';
+import '../tabs/Radio/RadioSceen.dart';
 class CustomBottomBar extends StatefulWidget {
   const CustomBottomBar ({Key? key, this.mypage}) : super(key: key);
   static const routeName = "home";
@@ -23,13 +22,18 @@ class CustomBottomBar extends StatefulWidget {
 
 class _CustomBottomBarState extends State<CustomBottomBar> {
   late AppConfigProvider provider;
-  var mainColor = Colors.white, activeColor = Colors.black;
+  var mainColor = Colors.white;
+  var onTapColor = Colors.black;
+  var onTapDarkColor = Color.fromRGBO(252,196,64,1);
   var currentIndex = 0;
 
   changeColor(index, currentIndex){
-    if(index == currentIndex){
-      return provider.isDarkTheme()? Color.fromRGBO(252,196,64,1):activeColor;
-    }else{
+    if(index == currentIndex)
+    {
+      return provider.isDarkTheme()? onTapDarkColor:onTapColor;
+    }
+    else
+    {
       return mainColor;
     }
   }
@@ -118,12 +122,6 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                   Icons.settings,
                   color: changeColor(4, currentIndex),
                 ),
-                /*
-                icon: ImageIcon(
-                  AssetImage("assets/images/settings.png"),
-                  color: changeColor(4, currentIndex),
-                  size: widget.iconSize,
-                ),*/
               ),
             ],
           ),

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'AppConfigProvider.dart';
+import '../../utility/AppConfigProvider.dart';
 
 class TasbeehCounterDisplay extends StatefulWidget {
   TasbeehCounterDisplay({Key? key, required this.imageToRotate})
@@ -19,7 +19,8 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
   String tasbeehButtonLabel = 'سبحان الله';
   late Image imageToRotate;
   bool rotate = true;
-
+  var colorTheme = Color.fromRGBO(183, 147, 95, 1).withAlpha(100);
+  var colorDarkTheme = Color.fromRGBO(20, 26,46, 1);
   @override
   void initState() {
     super.initState();
@@ -52,6 +53,7 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
       }
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +95,8 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
             ),
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
-                    provider.isDarkTheme()?Color.fromRGBO(20, 26,46, 1) : Color.fromRGBO(183, 147, 95, 1).withAlpha(100)),
+                    provider.isDarkTheme()? colorDarkTheme: colorTheme),
+
                 minimumSize: MaterialStateProperty.all(Size(60,80)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
@@ -105,7 +108,14 @@ class _TasbeehCounterDisplayState extends State<TasbeehCounterDisplay> {
 
         ElevatedButton(
             onPressed: null,
-            child: Text(tasbeehButtonLabel, textScaleFactor: 1.6,style: TextStyle(color: provider.isDarkTheme()? Colors.black: Colors.white.withOpacity(1),fontFamily: "Sultann", fontWeight: FontWeight.normal)),
+            child: Text(
+                tasbeehButtonLabel,
+                textScaleFactor: 1.6,
+                style: TextStyle(
+                    color: provider.isDarkTheme()? Colors.black: Colors.white.withOpacity(1),
+                    fontFamily: "Sultann",
+                    fontWeight: FontWeight.normal)
+            ),
             )
       ],
     );

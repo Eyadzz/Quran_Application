@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'AppConfigProvider.dart';
+import '../../utility/AppConfigProvider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'dart:math' as math;
 
@@ -10,7 +10,6 @@ class RadioScreen extends StatelessWidget {
 
   late AppConfigProvider provider;
   static const routeName = "radio";
-  var colorTheme = Color.fromRGBO(183, 147, 95, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,6 @@ class RadioScreen extends StatelessWidget {
                       alignment: AlignmentDirectional.center,
                       child: IconButton(
                           icon: provider.isDarkTheme()?Image.asset("assets/images/icon_next_dark.png"):Image.asset("assets/images/icon_next.png"),
-                          color: colorTheme,
                           onPressed: () {}
                           )
                   ),
@@ -56,7 +54,6 @@ class RadioScreen extends StatelessWidget {
                 Expanded(
                     child: IconButton(
                         icon: provider.isDarkTheme()?Image.asset("assets/images/icon_play_dark.png"):Image.asset("assets/images/icon_play.png"),
-                        color: colorTheme,
                         onPressed: () {}),
                 ),
                 Expanded(
@@ -65,7 +62,6 @@ class RadioScreen extends StatelessWidget {
                       alignment: AlignmentDirectional.center,
                       child: IconButton(
                           icon: provider.isDarkTheme()?Image.asset("assets/images/icon_prev_dark.png"):Image.asset("assets/images/icon_prev.png"),
-                          color: colorTheme,
                           onPressed: () {}
                           ),
                   ),

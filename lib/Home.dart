@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:quran_application/CustomBottomBar.dart';
-import 'package:quran_application/QuranScreen.dart';
-import 'package:quran_application/RadioSceen.dart';
-import 'package:quran_application/SideMenu.dart';
-import 'package:quran_application/TasbeehScreen.dart';
-import 'package:quran_application/HadethScreen.dart';
+import 'package:quran_application/modules/CustomBottomBar.dart';
+import 'package:quran_application/tabs/Quran/QuranScreen.dart';
+import 'package:quran_application/modules/SideMenu.dart';
+import 'package:quran_application/tabs/Tasbeeh/TasbeehScreen.dart';
+import 'package:quran_application/tabs/Hadeth/HadethScreen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'AppConfigProvider.dart';
-import 'SideMenu.dart';
+import 'utility/AppConfigProvider.dart';
+import 'modules/SideMenu.dart';
+import 'package:quran_application/tabs/Radio/RadioSceen.dart';
+
 class Home extends StatefulWidget {
   static const routeName = 'home';
   @override
