@@ -21,6 +21,7 @@ class ContentViewer extends StatefulWidget {
 class _ContentViewerState extends State<ContentViewer> {
   late AppConfigProvider provider;
   var colorDarkTheme = Color.fromRGBO(252,196,64,1);
+  var colorTheme = Color.fromRGBO(183, 147, 95, 1);
   @override
   Widget build(BuildContext context) {
     provider = Provider.of<AppConfigProvider>(context);
@@ -39,7 +40,7 @@ class _ContentViewerState extends State<ContentViewer> {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body:  Container(
+      body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
               image: provider.isDarkTheme()? AssetImage("assets/images/bg.png"): AssetImage("assets/images/bg3.png"),
@@ -62,7 +63,7 @@ class _ContentViewerState extends State<ContentViewer> {
                   Container(
                     height: 1,
                     width: 270,
-                    color: provider.isDarkTheme()? colorDarkTheme: Color.fromRGBO(183, 147, 95, 1),
+                    color: provider.isDarkTheme()? colorDarkTheme: colorTheme,
                   ),
                   new Expanded(
                       flex: 1,

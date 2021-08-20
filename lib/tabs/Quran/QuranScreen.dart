@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:quran_application/tabs/ContentViewer/ContentViewer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:quran_application/tabs/Quran/SurahItem.dart';
 import '../../utility/AppConfigProvider.dart';
 import '../../utility/FileOperations.dart';
-
-import 'dart:math' as math;
+import '../../components/Header.dart';
 
 
 class QuranScreen extends StatefulWidget {
 
   static const routeName = "quran";
-
 
   @override
   _QuranScreenState createState() => _QuranScreenState();
@@ -26,6 +24,8 @@ class _QuranScreenState extends State<QuranScreen> {
   var surahsVerses=[];
   var colorTheme = Color.fromRGBO(183, 147, 95, 1);
   var colorDarkTheme = Color.fromRGBO(252,196,64,1);
+  late var borderColor;
+  late var containerBorder = BorderSide(color: borderColor, width: 3);
 
   @override
   void  initState(){
@@ -39,6 +39,7 @@ class _QuranScreenState extends State<QuranScreen> {
     provider = Provider.of<AppConfigProvider>(context);
     final TextDirection currentDirection = Directionality.of(context);
     isRTL = currentDirection == TextDirection.rtl;
+    borderColor = provider.isDarkTheme()? colorDarkTheme:colorTheme;
 
     return Scaffold(
         body: Stack(
@@ -69,8 +70,8 @@ class _QuranScreenState extends State<QuranScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          header(AppLocalizations.of(context)!.surahName, BoxDecoration(border: Border(left: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),bottom: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),top: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,)))),
-                          header(AppLocalizations.of(context)!.numOfVerses, BoxDecoration(border: Border(bottom: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),top: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,)))),
+                          Header(AppLocalizations.of(context)!.surahName, BoxDecoration(border: Border(left: BorderSide(color: borderColor, width: 3),bottom: BorderSide(color: borderColor, width: 3),top: BorderSide(color: borderColor, width: 3))), isRTL),
+                          Header(AppLocalizations.of(context)!.numOfVerses, BoxDecoration(border: Border(bottom: BorderSide(color: borderColor, width: 3),top: BorderSide(color: borderColor, width: 3))), isRTL),
                         ],
                       ),
                       Expanded(
@@ -78,7 +79,7 @@ class _QuranScreenState extends State<QuranScreen> {
                           padding: EdgeInsets.only(top: 0.0),
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
-                          itemBuilder: (context, index) => surahListBuilder(surahsNames.elementAt(index), surahsVerses.elementAt(index), index+1),
+                          itemBuilder: (context, index) => SurahItem(surahsNames.elementAt(index), surahsVerses.elementAt(index), index+1, borderColor, isRTL),
                           itemCount: surahsNames.length,
                         ),
                       ),
@@ -100,70 +101,5 @@ class _QuranScreenState extends State<QuranScreen> {
     data = await FO.getDataFromFile('assets/content/suras_nums.txt');
     surahsVerses=data.split("\n");
     setState(() {});
-  }
-
-  Widget surahListBuilder(String surahName, String surahVerses, int index)
-  {
-    return Row(
-      children: [
-        Expanded(
-          child: Transform(
-            transform: Matrix4.rotationY(!isRTL ? math.pi : 0),
-            alignment: AlignmentDirectional.center,
-            child: Container(
-              decoration: BoxDecoration(border: Border(left: BorderSide(color: provider.isDarkTheme()? colorDarkTheme: colorTheme,width: 3,))),
-              child: TextButton(
-                onPressed: (){
-                  //Navigator.pushNamed(context,ReadQuran.routeName,arguments: ReadQuran(surahName,index,true));
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ContentViewer(surahName,index,true)));
-                },
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                ),
-                child: Transform(
-                  transform: Matrix4.rotationY(!isRTL ? math.pi : 0),
-                  alignment: AlignmentDirectional.center,
-                  child: Text(
-                    surahName,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Center(
-            child: Text(
-              surahVerses,
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget header(String title, var containerBorders)
-  {
-    return Expanded(
-      child: Transform(
-        transform: Matrix4.rotationY(!isRTL ? math.pi : 0),
-        alignment: AlignmentDirectional.center,
-        child: Container(
-          decoration: containerBorders,
-          child: Center(
-            child: Transform(
-              transform: Matrix4.rotationY(!isRTL ? math.pi : 0),
-              alignment: AlignmentDirectional.center,
-              child: Text(title,
-                style: Theme.of(context).textTheme.headline1
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-
   }
 }

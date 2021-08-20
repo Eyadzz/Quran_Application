@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:quran_application/tabs/ContentViewer/ContentViewer.dart';
+import 'HadethItem.dart';
+import '../../components/Header.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:quran_application/utility/FileOperations.dart';
@@ -19,7 +20,7 @@ class _HadethState extends State<HadethScreen> {
   var hadethName=[];
   var colorTheme = Color.fromRGBO(183, 147, 95, 1);
   var colorDarkTheme = Color.fromRGBO(252,196,64,1);
-
+  late var borderColor;
   @override
   void  initState(){
     getHadethContent();
@@ -28,7 +29,10 @@ class _HadethState extends State<HadethScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     provider = Provider.of<AppConfigProvider>(context);
+    borderColor =  provider.isDarkTheme()? colorDarkTheme:colorTheme;
+
     return Scaffold(
         extendBodyBehindAppBar: true,
         body: Stack(
@@ -59,7 +63,7 @@ class _HadethState extends State<HadethScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          header(AppLocalizations.of(context)!.hadith, BoxDecoration(border: Border(bottom: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,),top: BorderSide(color: provider.isDarkTheme()? colorDarkTheme:colorTheme,width: 3,)))),
+                          Header(AppLocalizations.of(context)!.hadith, BoxDecoration(border: Border(bottom: BorderSide(color:borderColor,width: 3,),top: BorderSide(color: borderColor,width: 3,))),true),
                         ],
                       ),
                       Expanded(
@@ -67,7 +71,7 @@ class _HadethState extends State<HadethScreen> {
                           padding: EdgeInsets.only(top: 0.0),
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
-                          itemBuilder: (context, index) => hadethListBuilder(hadethName.elementAt(index),index+1),
+                          itemBuilder: (context, index) => HadethItem(hadethName.elementAt(index),index+1),
                           itemCount: hadethName.length,
                         ),
                       ),
@@ -87,44 +91,5 @@ class _HadethState extends State<HadethScreen> {
     String data = await fileOperations.getDataFromFile('assets/content/hades_names.txt');
     hadethName=data.split("\n");
     setState(() {});
-  }
-
-  Widget hadethListBuilder(String name,int index)
-  {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            child: TextButton(
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ContentViewer(name,(index+1000),false)));
-              },
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.all(8.0),
-              ),
-              child:  Text(
-                name,
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget header(String text, var containerBorders)
-  {
-    return Expanded(
-      child: Container(
-        decoration: containerBorders,
-        child: Center(
-          child: Text(text,
-            style: Theme.of(context).textTheme.headline1
-          ),
-        ),
-      ),
-    );
-
   }
 }

@@ -5,7 +5,8 @@ class Preferences{
   static late SharedPreferences _preferences;
 
   static const _language = 'language';
-
+  static final lightTheme = "light";
+  static final darkTheme = "dark";
   static const _theme = 'theme';
 
   static Future init() async => _preferences = await SharedPreferences.getInstance();
@@ -17,15 +18,15 @@ class Preferences{
   static Future saveThemePreference(ThemeMode _themeMode) async {
     String themeMode;
     if(_themeMode == ThemeMode.light)
-      themeMode='light';
+      themeMode = lightTheme;
     else
-      themeMode = 'dark';
+      themeMode = darkTheme;
     _preferences.setString(_theme, themeMode);
   }
 
   static ThemeMode getThemePreference(){
     String theme =_preferences.getString(_theme).toString();
-    if(theme=='light')
+    if(theme==lightTheme)
       return ThemeMode.light;
     else
       return ThemeMode.dark;
