@@ -3,16 +3,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:quran_application/utility/FileOperations.dart';
 import '../../utility/AppConfigProvider.dart';
+import 'ContentViewerArgs.dart';
 
 class ContentViewer extends StatefulWidget {
   static const String routeName="ContentViewer";
-  String title="";
-  int fileNumber=0;
-  bool isSurah=true;
   int ayahNum=0;
-
-  ContentViewer(this.title,this.fileNumber,this.isSurah);
-
   @override
   _ContentViewerState createState() => _ContentViewerState();
 }
@@ -22,9 +17,11 @@ class _ContentViewerState extends State<ContentViewer> {
   late AppConfigProvider provider;
   var colorDarkTheme = Color.fromRGBO(252,196,64,1);
   var colorTheme = Color.fromRGBO(183, 147, 95, 1);
+  late var args;
   @override
   Widget build(BuildContext context) {
     provider = Provider.of<AppConfigProvider>(context);
+    args = ModalRoute.of(context)!.settings.arguments as ContentViewerArgs;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -59,7 +56,7 @@ class _ContentViewerState extends State<ContentViewer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:<Widget>[
                   SizedBox(height:120),
-                  Text(widget.title, style: Theme.of(context).textTheme.headline2),
+                  Text(args.title, style: Theme.of(context).textTheme.headline2),
                   Container(
                     height: 1,
                     width: 270,
@@ -68,18 +65,22 @@ class _ContentViewerState extends State<ContentViewer> {
                   new Expanded(
                       flex: 1,
                       child:new Container(
-                          margin: EdgeInsets.fromLTRB(40, 10, 40,100),
+                          margin: EdgeInsets.fromLTRB(40, 10, 40,120),
                           child: new SingleChildScrollView(
                               scrollDirection: Axis.vertical,
                               child: Padding(
                                 padding: const EdgeInsets.all(17.0),
                                 child: new FutureBuilder(
-                                    future: getContent(widget.fileNumber),
+                                    future: getContent(args.fileNumber),
                                     builder: (BuildContext context,
                                         AsyncSnapshot<String>lines) {
                                       if(lines.data!=null){
-                                        return new Directionality(textDirection: TextDirection.rtl, child:
-                                        Text(lines.data! ,style: Theme.of(context).textTheme.bodyText2)
+                                        return new Directionality(
+                                            textDirection: TextDirection.rtl,
+                                            child: Text(
+                                                lines.data! ,
+                                                style: Theme.of(context).textTheme.bodyText2
+                                            )
                                         );
                                       }
                                       else{
@@ -105,7 +106,7 @@ class _ContentViewerState extends State<ContentViewer> {
   }
 
   String formatContent(String content){
-    if(widget.isSurah) {
+    if(args.isSurah) {
       List<String> Surah = content.split('\n');
       String surahText = '';
       widget.ayahNum = 1;

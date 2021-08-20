@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:quran_application/tabs/ContentViewer/ContentViewer.dart';
+import 'package:quran_application/tabs/ContentViewer/ContentViewerArgs.dart';
 
 class SurahItem extends StatelessWidget {
 
@@ -24,8 +25,8 @@ class SurahItem extends StatelessWidget {
               decoration: BoxDecoration(border: Border(left: BorderSide(color: borderColor,width: 3,))),
               child: TextButton(
                 onPressed: (){
-                  //Navigator.pushNamed(context,ReadQuran.routeName,arguments: ReadQuran(surahName,index,true));
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ContentViewer(surahName,fileNumber,true)));
+                  Navigator.pushNamed(context,ContentViewer.routeName,arguments: ContentViewerArgs(surahName,fileNumber,true));
+                  //Navigator.push(context, MaterialPageRoute(builder: (context)=>ContentViewer(surahName,fileNumber,true)));
                 },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,

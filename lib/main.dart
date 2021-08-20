@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:quran_application/tabs/ContentViewer/ContentViewer.dart';
 import 'package:quran_application/utility/AppConfigProvider.dart';
 import 'package:quran_application/tabs/Quran/QuranScreen.dart';
 import 'package:quran_application/tabs/Radio/RadioSceen.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
             TasbeehScreen.routeName: (context)=>TasbeehScreen(),
             HadethScreen.routeName:(context)=>HadethScreen(),
             RadioScreen.routeName:(context)=>RadioScreen(),
+            ContentViewer.routeName:(context)=>ContentViewer(),
           },
         );
       },
