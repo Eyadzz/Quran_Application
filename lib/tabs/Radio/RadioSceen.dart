@@ -67,7 +67,7 @@ class _RadioScreenState extends State<RadioScreen> {
                     AppLocalizations.of(context)!.radio,
                     style: Theme.of(context).textTheme.headline2,
                   ),
-                  SizedBox(height: 60,),
+                  SizedBox(height: 50,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -80,8 +80,7 @@ class _RadioScreenState extends State<RadioScreen> {
                                 icon:  FaIcon(FontAwesomeIcons.stepForward, size: 25, color: currentTheme,),
                                 onPressed: () {
                                   index == stations.data!.radios.length? index : index++;
-                                  radioUrl = stations.data!.radios.elementAt(index).radio_url;
-                                  radioPlayer.setMediaItem('', radioUrl);
+                                  radioPlayer.setMediaItem('', stations.data!.radios.elementAt(index).radio_url);
                                   setState(() {});
                                 }
                             )
@@ -106,8 +105,7 @@ class _RadioScreenState extends State<RadioScreen> {
                               icon: FaIcon(FontAwesomeIcons.stepBackward, size: 25, color: currentTheme,),
                               onPressed: () {
                                 index==0? index: index--;
-                                radioUrl = stations.data!.radios.elementAt(index).radio_url;
-                                radioPlayer.setMediaItem('', radioUrl);
+                                radioPlayer.setMediaItem('', stations.data!.radios.elementAt(index).radio_url);
                                 setState(() {});
                               }
                           ),
@@ -115,6 +113,14 @@ class _RadioScreenState extends State<RadioScreen> {
                       ),
                       SizedBox(width: 50,),
                     ],
+                  ),
+                  SizedBox(height: 30,),
+                  Text(stations.data!.radios.elementAt(index).name,
+                      style: TextStyle(
+                        color: currentTheme,
+                        fontSize: 20,
+                        fontFamily: "ElMessiri",
+                      )
                   ),
                 ],
               );

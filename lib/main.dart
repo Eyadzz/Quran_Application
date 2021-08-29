@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
 
         return MaterialApp(
           themeMode: provider.themeMode,
-          darkTheme: OptionalThemeData.darkTheme,
-          theme: OptionalThemeData.lightTheme,
+          darkTheme: ThemeDataProvider.darkTheme,
+          theme: ThemeDataProvider.lightTheme,
           localizationsDelegates:[
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,

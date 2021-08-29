@@ -1,4 +1,4 @@
-import 'package:quran_application/utility/api/Radios.dart';
+import 'package:quran_application/utility/api/Radio.dart';
 
 class RadioResponse {
 
