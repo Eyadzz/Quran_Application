@@ -25,6 +25,10 @@ class AppConfigProvider extends ChangeNotifier
     return themeMode == ThemeMode.dark;
   }
 
+  bool isEnglish(){
+    return currentLocale=='en';
+  }
+
   void changeLanguage(String lang)
   {
     currentLocale = lang;

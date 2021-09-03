@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class OptionalThemeData {
+class ThemeDataProvider {
   static final primaryDarkThemeColor = Color.fromRGBO(252,196,64,1);
   static final secondaryDarkThemeColor = Color.fromRGBO(20, 26, 46, 1);
   static final primaryLightThemeColor = Color.fromRGBO(183, 147, 95, 1);
