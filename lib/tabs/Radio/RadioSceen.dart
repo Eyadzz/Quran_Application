@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -40,11 +42,11 @@ class _RadioScreenState extends State<RadioScreen> {
 
   @override
   Widget build(BuildContext context) {
-    provider = Provider.of<AppConfigProvider>(context);
-    currentTheme = provider.isDarkTheme()? colorDarkTheme:colorTheme;
-    radioStations = provider.isEnglish()?getRadioStations(englishRadio):getRadioStations(arabicRadio);
     final TextDirection currentDirection = Directionality.of(context);
     final bool isLTR = currentDirection == TextDirection.ltr;
+    provider = Provider.of<AppConfigProvider>(context);
+    currentTheme = provider.isDarkTheme()? colorDarkTheme:colorTheme;
+    radioStations = isLTR ? getRadioStations(englishRadio) : getRadioStations(arabicRadio);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -79,9 +81,7 @@ class _RadioScreenState extends State<RadioScreen> {
                             child: IconButton(
                                 icon:  FaIcon(FontAwesomeIcons.stepForward, size: 25, color: currentTheme,),
                                 onPressed: () {
-                                  index == stations.data!.radios.length? index : index++;
-                                  radioPlayer.setMediaItem('', stations.data!.radios.elementAt(index).radio_url);
-                                  setState(() {});
+                                  next(stations.data!.radios.elementAt(index).radio_url,stations.data!.radios.length);
                                 }
                             )
                         ),
@@ -90,10 +90,7 @@ class _RadioScreenState extends State<RadioScreen> {
                         child: IconButton(
                             icon: FaIcon(isPlaying?FontAwesomeIcons.pause:FontAwesomeIcons.play, size: 30, color: currentTheme,),
                             onPressed: () {
-                              radioPlayer.setMediaItem('', stations.data!.radios.elementAt(index).radio_url);
-                              isPlaying = !isPlaying;
-                              isPlaying ? radioPlayer.play() : radioPlayer.pause();
-                              setState(() {});
+                              play(stations.data!.radios.elementAt(index).radio_url);
                             }
                         ),
                       ),
@@ -104,9 +101,7 @@ class _RadioScreenState extends State<RadioScreen> {
                           child: IconButton(
                               icon: FaIcon(FontAwesomeIcons.stepBackward, size: 25, color: currentTheme,),
                               onPressed: () {
-                                index==0? index: index--;
-                                radioPlayer.setMediaItem('', stations.data!.radios.elementAt(index).radio_url);
-                                setState(() {});
+                                previous(stations.data!.radios.elementAt(index).radio_url);
                               }
                           ),
                         ),
@@ -115,7 +110,7 @@ class _RadioScreenState extends State<RadioScreen> {
                     ],
                   ),
                   SizedBox(height: 30,),
-                  Text(stations.data!.radios.elementAt(index).name,
+                  Text(convertUTF8(stations.data!.radios.elementAt(index).name),
                       style: TextStyle(
                         color: currentTheme,
                         fontSize: 20,
@@ -134,4 +129,27 @@ class _RadioScreenState extends State<RadioScreen> {
       ),
     );
   }
+  void play(String radioStation){
+    radioPlayer.setMediaItem('', radioStation);
+    isPlaying = !isPlaying;
+    isPlaying ? radioPlayer.play() : radioPlayer.pause();
+    setState(() {});
+  }
+
+  void next(String radioStation, int length){
+    index == length? index : index++;
+    radioPlayer.setMediaItem('', radioStation);
+    setState(() {});
+  }
+
+  void previous(String radioStation){
+    index==0? index: index--;
+    radioPlayer.setMediaItem('', radioStation);
+    setState(() {});
+  }
+}
+
+String convertUTF8(String text) {
+  List<int> bytes = text.toString().codeUnits;
+  return utf8.decode(bytes);
 }

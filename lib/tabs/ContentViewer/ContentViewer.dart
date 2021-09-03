@@ -84,7 +84,7 @@ class _ContentViewerState extends State<ContentViewer> {
                                         );
                                       }
                                       else{
-                                        return new Text(AppLocalizations.of(context)!.nothingtoshow);
+                                        return Center(child: CircularProgressIndicator());
                                       }
                                     }
                                 ),
